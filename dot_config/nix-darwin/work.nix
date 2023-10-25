@@ -195,6 +195,7 @@
         enable = true;
         plugins = [
           { name = "plugins/git"; tags = [ from:oh-my-zsh ]; }
+          { name = "mattberther/zsh-pyenv"; }
         ];
       };
     };
