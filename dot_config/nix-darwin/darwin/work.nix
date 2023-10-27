@@ -1,8 +1,40 @@
-{ config, pkgs, ... }:
+#
+#  Specific system configuration settings for MacBook
+#
+#  flake.nix
+#   └─ ./darwin
+#       ├─ default.nix
+#       ├─ personal.nix *
+#       ├─ work.nix
+#       └─ ./modules
+#           └─ default.nix
+#
+
+{ config, pkgs, vars, darwinVars, ... }:
 
 
 {
-  imports = [ ./common.nix ];
+  #imports = [ ./common.nix ];
+
+    users.users.${vars.user} = {            # MacOS User
+      name = vars.user;
+      home = "/Users/${vars.user}";
+      shell = pkgs.zsh;                     # Default Shell
+    };
+
+    environment = {
+        shells = with pkgs; [ zsh ];          # Default Shell
+        variables = {                         # Environment Variables
+          EDITOR = "${vars.editor}";
+          VISUAL = "${vars.editor}";
+        };
+        systemPackages =  with pkgs; [ vim
+      alacritty
+      neovim
+      oh-my-posh
+    ];
+
+      };
 
   environment.shellAliases = {
     vim="nvim";
@@ -185,7 +217,7 @@
       history = {
         expireDuplicatesFirst = true;
         extended = true;
-        ignoreAllDups = true;
+#        ignoreAllDups = true;
         ignoreSpace = true;
         save = 5000;
         size = 1000000000;
@@ -200,7 +232,7 @@
       };
     };
 
-    home.file.".config/zsh/scripts/aws_pip".source = ./scripts/aws_pip;
+#    home.file.".config/zsh/scripts/aws_pip".source = ./scripts/aws_pip;
 
     home.sessionVariables = {
       EDITOR = "nvim";

@@ -16,7 +16,7 @@ in
 {
   Alis-MacBook-Pro-2 = darwin.lib.darwinSystem {
     inherit system;
-    specialArgs = { inherit inputs vars; };
+    specialArgs = { inherit inputs vars darwinVars; };
     modules = [                                             # Modules Used
       ./work.nix
       
