@@ -30,15 +30,7 @@ in
       EDITOR = "${vars.editor}";
       VISUAL = "${vars.editor}";
     };
-    systemPackages =  [         # System-Wide Packages
-      # Terminal
-      #fzf
-      #git
-      #neovim
-      #oh-my-posh
-      #vim
-      #zsh
-    ];
+    systemPackages =  [];
 
   };
 

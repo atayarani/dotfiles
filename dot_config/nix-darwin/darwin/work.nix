@@ -12,9 +12,9 @@
 
 { config, pkgs, vars, darwinVars, ... }:
 
-
+let
+in
 {
-  #imports = [ ./common.nix ];
 
     users.users.${vars.user} = {            # MacOS User
       name = vars.user;
@@ -28,23 +28,51 @@
           EDITOR = "${vars.editor}";
           VISUAL = "${vars.editor}";
         };
-        systemPackages =  with pkgs; [ vim
-      alacritty
-      neovim
-      oh-my-posh
-    ];
+        systemPackages =  [];
 
       };
 
-  environment.shellAliases = {
-    vim="nvim";
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      (nerdfonts.override {
+        fonts = [
+        "FiraCode"
+        ];
+      })
+    ];
   };
 
-  home-manager.users.ali = { pkgs, ... }: {
-    home.packages = with pkgs; [
-    ];
-    home.stateVersion = "20.03";
+  nix = {
+    package = pkgs.nix;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
+    nixpkgs.config.allowUnfree = true;        # Allow Proprietary Software.
+
+    services = { nix-daemon = { enable = true; }; }; # Enable Nix Daemon
+
+  home-manager.users.${vars.user} = {
+    home = {
+       stateVersion = "23.05";
+       sessionVariables = {
+             EDITOR = "nvim";
+             PATH = "/nix/var/nix/profiles/default/bin:$HOME/.nix-profile/bin:/run/current-system/sw/bin/:$HOME/.config/zsh/scripts:/opt/homebrew/bin:$PATH";
+             GRANTED_ALIAS_CONFIGURED = "true";
+           };
+        #  file.".config/zsh/scripts/aws_pip".source = ./scripts/aws_pip;
+    };
+
+    programs =
+    { alacritty = { enable = true; }; };
+
+    programs.neovim = {
+        enable = true;
+        viAlias = true;
+        vimAlias = true;
+        };
     programs.git = {
       enable = true;
       diff-so-fancy.enable = true;
@@ -230,14 +258,6 @@
           { name = "mattberther/zsh-pyenv"; }
         ];
       };
-    };
-
-#    home.file.".config/zsh/scripts/aws_pip".source = ./scripts/aws_pip;
-
-    home.sessionVariables = {
-      EDITOR = "nvim";
-      PATH = "$HOME/.config/zsh/scripts:/opt/homebrew/bin:$PATH";
-      GRANTED_ALIAS_CONFIGURED = "true";
     };
   };
 }

@@ -25,9 +25,6 @@ in
         #home-manager.useUserPackages = true;
       }
 
-     { services = {
-        nix-daemon.enable = true;             # Auto-Upgrade Daemon
-      }; }
     ];
   };
 
