@@ -10,7 +10,7 @@
 #           └─ default.nix
 #
 
-{ config, pkgs, vars, ... }:
+{ config, pkgs, vars, darwinVars, ... }:
 
 let 
   user = "alitayarani";
@@ -30,59 +30,132 @@ in
       EDITOR = "${vars.editor}";
       VISUAL = "${vars.editor}";
     };
-    systemPackages = with pkgs; [         # System-Wide Packages
+    systemPackages =  [         # System-Wide Packages
       # Terminal
-      fzf
-      git
-      neovim
-      oh-my-posh
-      zsh
+      #fzf
+      #git
+      #neovim
+      #oh-my-posh
+      #vim
+      #zsh
+    ];
+
+  };
+
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      (nerdfonts.override {
+        fonts = [
+        "FiraCode"
+        ];
+      })
     ];
   };
 
   nix = {
     package = pkgs.nix;
-    gc = {                                # Garbage Collection
-      automatic = true;
-      interval.Day = 7;
-      options = "--delete-older-than 7d";
-    };
     extraOptions = ''
-      auto-optimise-store = true
       experimental-features = nix-command flakes
     '';
   };
 
   nixpkgs.config.allowUnfree = true;        # Allow Proprietary Software.
 
+  services = { 
+    nix-daemon = { enable = true; }; 
+    yabai = {
+      enable = false;
+      enableScriptingAddition = true;
+    };
+  };
+
   homebrew = {                            # Homebrew Package Manager
     enable = true;
     onActivation = {
       autoUpdate = false;
       upgrade = false;
-   #   cleanup = "zap";
+      cleanup = "zap";
     };
     brews = [
+      "fnm"
     ];
     casks = [
-     "1password-beta"
+      "1password-beta"
+      "sonos"
+      "alfred"
+      "obsidian"
+      "tailscale"
+      "flux"
+      "setapp"
+      "iterm2"
+      "openaudible"
+      "steam"
+      "itch"
+      "zoom"
+      "zotero"
+    ];
+    masApps = {
+      Infuse = 1136220934;
+      LanScan = 472226235;
+    };
+    taps = [
+      "homebrew/cask-versions"
     ];
   };
 
   home-manager.users.${user} = {
     home = {
-      stateVersion = "22.05";
+      sessionVariables = {
+        EDITOR = "nvim";
+        PATH = "/run/current-system/sw/bin/:$HOME/.config/zsh/scripts:/opt/homebrew/bin:$PATH";
+      };
+      stateVersion = "23.05";
+      shellAliases = {
+        xdg-ninja = "nix run github:b3nj5m1n/xdg-ninja";
+      };
     };
 
+    xdg = { enable = true; };
+
     programs = {
+      alacritty = { enable = true; };
       fzf = {
         enable = true;
+        enableZshIntegration = true;
       };
-      oh-my-posh = {
+      gh = { enable = true; };
+      git = { enable = true; };
+      neovim = {
         enable = true;
+        viAlias = true;
+        vimAlias = true;
+      };
+      go = { enable = true; };
+      gpg = { enable = true; };
+      jq = { enable = true; };
+      oh-my-posh = { enable = true; };
+      pandoc = { enable = true; };
+      ssh = { enable = true; };
+      zoxide = {
+        enable = true;
+        enableZshIntegration = true;
       };
       zsh = {
         enable = true;
+        enableAutosuggestions = true;
+        enableCompletion = true;
+
+        initExtra = " eval \"$(fnm env --use-on-cd)\" ";
+
+        dotDir = ".config/zsh";
+        zplug = {
+          enable = true;
+          plugins = [
+            { name = "plugins/git"; tags = [ from:oh-my-zsh ]; }
+            { name = "plugins/fnm"; tags = [ from:oh-my-zsh ]; }
+          ];
+        };
       };
     };
   };

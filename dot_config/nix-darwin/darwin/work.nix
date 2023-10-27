@@ -3,7 +3,6 @@
 
 {
   imports = [ ./common.nix ];
-  nixpkgs.config.allowUnfree = true;        # Allow Proprietary Software.
 
   environment.shellAliases = {
     vim="nvim";
@@ -74,7 +73,7 @@
               type = "git";
               properties = {
                 fetch_status = true;
-                template = ":: {{ .HEAD }}{{ .BranchStatus }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }} ";
+        template = ":: {{ .HEAD }}{{ .BranchStatus }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }} ";
               };
             }
             {

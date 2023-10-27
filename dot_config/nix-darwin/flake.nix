@@ -32,13 +32,18 @@
     };
   in
   {
+
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Alis-MacBook-Pro-2
+
+  nix.settings.experimental-features = "nix-command flakes";
+  nix.settings.allowed-users = [ "root" "alitayarani" ];
+  nix.settings.trusted-users = [ "root" "alitayarani" ];
 
     darwinConfigurations = (
       import ./darwin {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-unstable home-manager darwin vars;
+        inherit inputs nixpkgs nixpkgs-unstable home-manager darwin vars; 
       }
     );
 

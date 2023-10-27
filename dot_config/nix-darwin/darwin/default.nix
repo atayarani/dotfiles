@@ -11,6 +11,7 @@
 
 let
   system = "aarch64-darwin";
+  darwinVars = {};
 in 
 {
   Alis-MacBook-Pro-2 = darwin.lib.darwinSystem {
@@ -21,7 +22,7 @@ in
       
       home-manager.darwinModules.home-manager {             # Home-Manager Module
         home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
+        #home-manager.useUserPackages = true;
       }
 
      { services = {
@@ -32,18 +33,16 @@ in
 
   Alis-Macbook-Air = darwin.lib.darwinSystem {
     inherit system;
-    specialArgs = { inherit inputs vars ; };
+    specialArgs = { inherit inputs vars darwinVars ; };
     modules = [                                             # Modules Used
       ./personal.nix
       
       home-manager.darwinModules.home-manager {             # Home-Manager Module
         home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
+#        home-manager.useUserPackages = true;
       }
 
-     { services = {
-        nix-daemon.enable = true;             # Auto-Upgrade Daemon
-      }; }
+
 
     ];
   };
