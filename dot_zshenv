@@ -1,3 +1,0 @@
-source $HOME/.config/zsh/plugins/xdg_paths
-export ZSH_CACHE_DIR="$XDG_CACHE_HOME/oh-my-zsh"
-export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
