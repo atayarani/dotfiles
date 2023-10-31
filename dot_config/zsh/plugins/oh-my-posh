@@ -1,3 +1,0 @@
-#!/bin/bash
-
-eval "$(oh-my-posh --init --shell zsh --config $XDG_CONFIG_HOME/prompt/omp.yaml)"
