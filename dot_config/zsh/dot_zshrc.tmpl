@@ -7,7 +7,6 @@ export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr
 autoload -Uz compinit
 compinit
 
-source $HOME/.config/zsh/plugins/xdg_paths
 source $XDG_CONFIG_HOME/zsh/plugins/sheldon
 source $XDG_CONFIG_HOME/zsh/plugins/oh-my-posh
 source $XDG_CONFIG_HOME/zsh/plugins/history
@@ -26,10 +25,5 @@ export ORGANIZE_CONFIG=$HOME/.config/organize.yaml
 export GOPATH=$HOME/go
 export PATH=./Library/Python/3.8/bin:$PATH
 export PATH=$PATH:$GOPATH/bin
-
-export EDITOR="idea -e --wait"
-
-alias gi='git-ignore'
-alias dsf='diff-so-fancy'
 
 source $HOME/.config/zsh/.zshenv

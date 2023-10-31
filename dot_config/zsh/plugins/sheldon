@@ -1,4 +1,0 @@
-#!/bin/bash
-
-## Shell Plugins
-eval "$(sheldon source)"
