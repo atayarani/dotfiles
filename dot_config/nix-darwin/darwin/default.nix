@@ -34,7 +34,7 @@ in {
         home-manager.useGlobalPkgs = true;
         #home-manager.useUserPackages = true;
       }
-
+#
       {
         services = {
           nix-daemon.enable = true; # Auto-Upgrade Daemon

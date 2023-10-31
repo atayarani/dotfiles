@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  darwinVars,
   ...
 }: let
   hostVars = {
@@ -10,17 +11,24 @@
 in {
   imports = import ./modules;
 
-  git = {hostVars, ...}: {
+  users.users.${hostVars.user} = {
+    # MacOS User
+    name = hostVars.user;
+    home = "/Users/${hostVars.user}";
+    shell = pkgs.zsh; # Default Shell
+  };
+
+  git = {
     enable = true;
     osUser = hostVars.user;
     userName = "ChronoSerrano";
     userEmail = "117208915+ChewAli@users.noreply.github.com";
   };
 
-  home-manager.users.hostVars.user = {pkgs, ...}: {
+  home-manager.users.${hostVars.user} = {pkgs, ...}: {
     home.packages = with pkgs; [
     ];
-    home.stateVersion = "20.03";
+    home.stateVersion = "23.05";
 
     # programs.git = {
     #   enable = true;
@@ -202,7 +210,7 @@ in {
       history = {
         expireDuplicatesFirst = true;
         extended = true;
-        ignoreAllDups = true;
+#        ignoreAllDups = true;
         ignoreSpace = true;
         save = 5000;
         size = 1000000000;
@@ -220,7 +228,7 @@ in {
       };
     };
 
-    home.file.".config/zsh/scripts/aws_pip".source = ./scripts/aws_pip;
+#    home.file.".config/zsh/scripts/aws_pip".source = ./scripts/aws_pip;
 
     home.sessionVariables = {
       EDITOR = "nvim";
