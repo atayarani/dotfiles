@@ -5,33 +5,61 @@
 #   └─ ./darwin
 #       ├─ default.nix
 #       ├─ personal.nix *
-#       ├─ work.nix 
+#       ├─ work.nix
 #       └─ ./modules
 #           └─ default.nix
 #
-
-{ config, pkgs, vars, darwinVars, ... }:
-
-let 
-  user = "alitayarani";
-in
 {
-  #imports = ( import ./modules );
-
-  users.users.${user} = {            # MacOS User
-    name = user;
-    home = "/Users/${user}";
-    shell = pkgs.zsh;                     # Default Shell
+  config,
+  pkgs,
+  legacy,
+  lib,
+  darwinVars,
+  ...
+}: let
+  hostVars = {
+    inherit (darwinVars) editor;
+    user = "alitayarani";
   };
-  
-  environment = {
-    shells = with pkgs; [ zsh ];          # Default Shell
-    variables = {                         # Environment Variables
-      EDITOR = "${vars.editor}";
-      VISUAL = "${vars.editor}";
-    };
-    systemPackages =  [];
+  omp = import ./shared/oh-my-posh.nix;
+in {
+  imports = import ./modules;
 
+  git = {
+    enable = true;
+    osUser = hostVars.user;
+    userName = "ChronoSerrano";
+    userEmail = "619512+ChronoSerrano@users.noreply.github.com";
+  };
+
+  users.users.${hostVars.user} = {
+    # MacOS User
+    name = hostVars.user;
+    home = "/Users/${hostVars.user}";
+    shell = pkgs.zsh; # Default Shell
+  };
+
+  nixpkgs.config.allowUnfree = true; # Allow Proprietary Software.
+  environment = {
+    shells = with pkgs; [zsh]; # Default Shell
+    variables = {
+      # Environment Variables
+      EDITOR = "${hostVars.editor}";
+      VISUAL = "${hostVars.editor}";
+    };
+    systemPackages = [
+      # System-Wide Packages
+      # Terminal
+      #fzf
+      #git
+      #neovim
+      #oh-my-posh
+      #vim
+      #zsh
+      pkgs.alejandra
+      legacy.fnm
+      legacy.chezmoi
+    ];
   };
 
   fonts = {
@@ -39,7 +67,7 @@ in
     fonts = with pkgs; [
       (nerdfonts.override {
         fonts = [
-        "FiraCode"
+          "FiraCode"
         ];
       })
     ];
@@ -52,26 +80,17 @@ in
     '';
   };
 
-  nixpkgs.config.allowUnfree = true;        # Allow Proprietary Software.
+  services = {nix-daemon = {enable = true;};};
 
-  services = { 
-    nix-daemon = { enable = true; }; 
-    yabai = {
-      enable = false;
-      enableScriptingAddition = true;
-    };
-  };
-
-  homebrew = {                            # Homebrew Package Manager
+  homebrew = {
+    # Homebrew Package Manager
     enable = true;
     onActivation = {
       autoUpdate = false;
       upgrade = false;
       cleanup = "zap";
     };
-    brews = [
-      "fnm"
-    ];
+    brews = [];
     casks = [
       "1password-beta"
       "sonos"
@@ -86,6 +105,10 @@ in
       "itch"
       "zoom"
       "zotero"
+      "alacritty"
+      "espanso"
+      "macupdater"
+      "vscodium"
     ];
     masApps = {
       Infuse = 1136220934;
@@ -96,11 +119,11 @@ in
     ];
   };
 
-  home-manager.users.${user} = {
+  home-manager.users.${hostVars.user} = {
     home = {
       sessionVariables = {
         EDITOR = "nvim";
-        PATH = "/run/current-system/sw/bin/:$HOME/.config/zsh/scripts:/opt/homebrew/bin:$PATH";
+        PATH = "$HOME/.nix-profile/bin:/run/current-system/sw/bin/:$HOME/.config/zsh/scripts:/opt/homebrew/bin:$PATH";
       };
       stateVersion = "23.05";
       shellAliases = {
@@ -108,27 +131,54 @@ in
       };
     };
 
-    xdg = { enable = true; };
+    xdg = {enable = true;};
 
     programs = {
-      alacritty = { enable = true; };
+      alacritty = {
+        enable = true;
+        settings = {};
+      };
       fzf = {
         enable = true;
         enableZshIntegration = true;
       };
-      gh = { enable = true; };
-      git = { enable = true; };
+      gh = {enable = true;};
+      # git = git // {
+      #   userName = "ChronoSerrano";
+      #   userEmail = "619512+ChronoSerrano@users.noreply.github.com";
+      # };
       neovim = {
         enable = true;
         viAlias = true;
         vimAlias = true;
+        vimdiffAlias = true;
       };
-      go = { enable = true; };
-      gpg = { enable = true; };
-      jq = { enable = true; };
-      oh-my-posh = { enable = true; };
-      pandoc = { enable = true; };
-      ssh = { enable = true; };
+      go = {enable = true;};
+      gpg = {enable = true;};
+      jq = {enable = true;};
+      oh-my-posh = {
+        enable = true;
+        settings = {
+          blocks = [
+            {
+              alignment = "left";
+              type = "prompt";
+              segments = with omp.segments; [
+                os
+                session
+                git
+              ];
+            }
+          ];
+        };
+      };
+      pandoc = {enable = true;};
+      ssh = {enable = true;};
+      tealdeer = {enable = true;};
+      tmux = {
+        enable = true;
+        clock24 = true;
+      };
       zoxide = {
         enable = true;
         enableZshIntegration = true;
@@ -137,6 +187,8 @@ in
         enable = true;
         enableAutosuggestions = true;
         enableCompletion = true;
+        #syntaxHighlighting = { enable = true; };
+        #zsh-abbr = { enable = true; };
 
         initExtra = " eval \"$(fnm env --use-on-cd)\" ";
 
@@ -144,12 +196,17 @@ in
         zplug = {
           enable = true;
           plugins = [
-            { name = "plugins/git"; tags = [ from:oh-my-zsh ]; }
-            { name = "plugins/fnm"; tags = [ from:oh-my-zsh ]; }
+            {
+              name = "plugins/git";
+              tags = [from:oh-my-zsh];
+            }
+            {
+              name = "plugins/fnm";
+              tags = [from:oh-my-zsh];
+            }
           ];
         };
       };
     };
   };
 }
-
