@@ -24,12 +24,50 @@
   omp = import ./shared/oh-my-posh.nix;
 in {
   imports = import ./modules;
-
   git = {
     enable = true;
     osUser = hostVars.user;
     userName = "ChronoSerrano";
     userEmail = "619512+ChronoSerrano@users.noreply.github.com";
+  };
+
+  oh-my-posh = {
+    enable = true;
+    osUser = hostVars.user;
+    blocks = [
+      {
+        alignment = "left";
+        type = "prompt";
+        segments = with omp.segments; [os session git];
+      }
+      {
+        alignment = "right";
+        type = "prompt";
+        segments = with omp.segments; [battery time];
+      }
+      {
+        alignment = "left";
+        type = "prompt";
+        newline = true;
+        segments = with omp.segments; [path];
+      }
+      omp.segments.status
+    ];
+  };
+
+  espanso = {
+    enable = true;
+    osUser = hostVars.user;
+    config = {search_shortcut = "CTRL+SPACE";};
+  };
+
+  zplug = {
+    enable = true;
+    osUser = hostVars.user;
+    plugins = {
+      git = true;
+      fnm = true;
+    };
   };
 
   users.users.${hostVars.user} = {
@@ -39,7 +77,6 @@ in {
     shell = pkgs.zsh; # Default Shell
   };
 
-  nixpkgs.config.allowUnfree = true; # Allow Proprietary Software.
   environment = {
     shells = with pkgs; [zsh]; # Default Shell
     variables = {
@@ -49,13 +86,6 @@ in {
     };
     systemPackages = [
       # System-Wide Packages
-      # Terminal
-      #fzf
-      #git
-      #neovim
-      #oh-my-posh
-      #vim
-      #zsh
       pkgs.alejandra
       legacy.fnm
       legacy.chezmoi
@@ -122,7 +152,7 @@ in {
   home-manager.users.${hostVars.user} = {
     home = {
       sessionVariables = {
-        EDITOR = "nvim";
+        EDITOR = hostVars.editor;
         PATH = "$HOME/.nix-profile/bin:/run/current-system/sw/bin/:$HOME/.config/zsh/scripts:/opt/homebrew/bin:$PATH";
       };
       stateVersion = "23.05";
@@ -130,8 +160,6 @@ in {
         xdg-ninja = "nix run github:b3nj5m1n/xdg-ninja";
       };
     };
-
-    xdg = {enable = true;};
 
     programs = {
       alacritty = {
@@ -142,11 +170,16 @@ in {
         enable = true;
         enableZshIntegration = true;
       };
-      gh = {enable = true;};
-      # git = git // {
-      #   userName = "ChronoSerrano";
-      #   userEmail = "619512+ChronoSerrano@users.noreply.github.com";
-      # };
+      gh = {
+        enable = true;
+        settings = {
+          aliases = {
+            co = "pr checkout";
+          };
+          git_protocol = "https";
+          editor = hostVars.editor;
+        };
+      };
       neovim = {
         enable = true;
         viAlias = true;
@@ -156,22 +189,6 @@ in {
       go = {enable = true;};
       gpg = {enable = true;};
       jq = {enable = true;};
-      oh-my-posh = {
-        enable = true;
-        settings = {
-          blocks = [
-            {
-              alignment = "left";
-              type = "prompt";
-              segments = with omp.segments; [
-                os
-                session
-                git
-              ];
-            }
-          ];
-        };
-      };
       pandoc = {enable = true;};
       ssh = {enable = true;};
       tealdeer = {enable = true;};
@@ -193,20 +210,9 @@ in {
         initExtra = " eval \"$(fnm env --use-on-cd)\" ";
 
         dotDir = ".config/zsh";
-        zplug = {
-          enable = true;
-          plugins = [
-            {
-              name = "plugins/git";
-              tags = [from:oh-my-zsh];
-            }
-            {
-              name = "plugins/fnm";
-              tags = [from:oh-my-zsh];
-            }
-          ];
-        };
       };
     };
+
+    xdg = {enable = true;};
   };
 }

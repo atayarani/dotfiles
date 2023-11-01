@@ -13,6 +13,7 @@
   darwin,
   home-manager,
   vars,
+  agenix,
   ...
 }: let
   system = "aarch64-darwin";
@@ -23,7 +24,7 @@
 in {
   Alis-MacBook-Pro-2 = darwin.lib.darwinSystem {
     inherit system;
-    specialArgs = {inherit inputs darwinVars;};
+    specialArgs = {inherit inputs darwinVars legacy agenix;};
     modules = [
       # Modules Used
       ./work.nix
@@ -34,18 +35,12 @@ in {
         home-manager.useGlobalPkgs = true;
         #home-manager.useUserPackages = true;
       }
-#
-      {
-        services = {
-          nix-daemon.enable = true; # Auto-Upgrade Daemon
-        };
-      }
     ];
   };
 
   Alis-Macbook-Air = darwin.lib.darwinSystem {
     inherit system;
-    specialArgs = {inherit inputs darwinVars legacy;};
+    specialArgs = {inherit inputs darwinVars legacy agenix;};
     modules = [
       # Modules Used
       ./personal.nix

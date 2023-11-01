@@ -6,19 +6,8 @@
 }:
 with lib; {
   options.git = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-      description = mdDoc ''
-        Enable Git Configuration
-      '';
-    };
-    osUser = mkOption {
-      type = types.str;
-      description = mdDoc ''
-        OS User
-      '';
-    };
+    enable = mkEnableOption "git";
+    osUser = mkOption {type = types.str;};
     userName = mkOption {
       type = types.str;
       default = null;

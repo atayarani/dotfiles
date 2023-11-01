@@ -23,6 +23,8 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix.url = "github:ryantm/agenix";
   };
 
   outputs = inputs @ {
@@ -31,6 +33,7 @@
     nixpkgs-unstable,
     home-manager,
     darwin,
+    agenix,
   }:
   # Function telling flake which inputs to use
   let
@@ -50,11 +53,8 @@
     darwinConfigurations = (
       import ./darwin {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-unstable home-manager darwin vars;
+        inherit inputs nixpkgs nixpkgs-unstable home-manager darwin vars agenix;
       }
     );
-
-    # Expose the package set, including overlays, for convenience.
-    #darwinPackages = self.darwinConfigurations."Alis-MacBook-Pro-2".pkgs;
   };
 }
