@@ -77,6 +77,13 @@ in {
     };
   };
 
+    nix = {
+      package = pkgs.nix;
+      extraOptions = ''
+        experimental-features = nix-command flakes
+      '';
+    };
+
   home-manager.users.${hostVars.user} = {pkgs, ...}: {
     home = {
       packages = with pkgs; [];
@@ -86,45 +93,22 @@ in {
         PATH = "$HOME/.nix-profile/bin:/run/current-system/sw/bin/:$HOME/.config/zsh/scripts:/opt/homebrew/bin:$PATH";
         GRANTED_ALIAS_CONFIGURED = "true";
       };
-      # file.".config/zsh/scripts/aws_pip".source = ./scripts/aws_pip
+       file.".config/zsh/scripts/aws_pip".source = ../scripts/aws_pip;
     };
     xdg = {enable = true;};
 
     programs = {
-      # oh-my-posh = {
-      #   enable = true;
-      #   settings = {
-      #     version = 2;
-      #     console_title_template = "{{.Folder}}{{if .Root}} ::  {{.Shell}}";
-      #     final_space = true;
-      #     pwd = "osc99";
-      #     shell_integration = true;
-
-      #   blocks = [
-      #     {
-      #       alignment = "left";
-      #       type = "prompt";
-      #       segments = with omp.segments; [os session git aws];
-      #     }
-      #     {
-      #       alignment = "right";
-      #       type = "prompt";
-      #       segments = with omp.segments; [node python battery time];
-      #     }
-      #     {
-      #       alignment = "left";
-      #       type = "prompt";
-      #       newline = true;
-      #       segments = with omp.segments; [path];
-      #     }
-      #     omp.segments.status
-      #   ];
-      # };
-      # };
       ssh = {enable = true;};
       fzf = {
         enable = true;
         enableZshIntegration = true;
+      };
+      neovim = {
+        enable = true;
+        defaultEditor = true;
+        viAlias = true;
+        vimAlias = true;
+#        vimDiffAlias = true;
       };
       zsh = {
         enable = true;
@@ -137,6 +121,7 @@ in {
 
         envExtra = ''
           alias assume="source assume"
+          source ~/.config/zsh/scripts/aws_pip
         '';
 
         history = {
@@ -147,17 +132,6 @@ in {
           save = 5000;
           size = 1000000000;
         };
-
-        # zplug = {
-        #   enable = true;
-        #   plugins = [
-        #     {
-        #       name = "plugins/git";
-        #       tags = [from:oh-my-zsh];
-        #     }
-        #     {name = "mattberther/zsh-pyenv";}
-        #   ];
-        # };
       };
     };
   };
