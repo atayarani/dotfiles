@@ -2,6 +2,7 @@
   config,
   pkgs,
   darwinVars,
+  legacy,
   ...
 }: let
   hostVars = {
@@ -12,6 +13,20 @@ in {
   imports = import ./modules;
 
   services = {nix-daemon.enable = true;}; # Auto-Upgrade Daemon
+
+  environment = {
+    shells = with pkgs; [zsh]; # Default Shell
+    variables = {
+      # Environment Variables
+      EDITOR = "${hostVars.editor}";
+      VISUAL = "${hostVars.editor}";
+    };
+    systemPackages = [
+      # System-Wide Packages
+      pkgs.alejandra
+      legacy.fnm
+    ];
+  };
 
   users.users.${hostVars.user} = {
     # MacOS User
@@ -77,12 +92,12 @@ in {
     };
   };
 
-    nix = {
-      package = pkgs.nix;
-      extraOptions = ''
-        experimental-features = nix-command flakes
-      '';
-    };
+  nix = {
+    package = pkgs.nix;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   home-manager.users.${hostVars.user} = {pkgs, ...}: {
     home = {
@@ -93,7 +108,7 @@ in {
         PATH = "$HOME/.nix-profile/bin:/run/current-system/sw/bin/:$HOME/.config/zsh/scripts:/opt/homebrew/bin:$PATH";
         GRANTED_ALIAS_CONFIGURED = "true";
       };
-       file.".config/zsh/scripts/aws_pip".source = ../scripts/aws_pip;
+      file.".config/zsh/scripts/aws_pip".source = ../scripts/aws_pip;
     };
     xdg = {enable = true;};
 
@@ -108,7 +123,7 @@ in {
         defaultEditor = true;
         viAlias = true;
         vimAlias = true;
-#        vimDiffAlias = true;
+        #        vimDiffAlias = true;
       };
       zsh = {
         enable = true;
@@ -123,6 +138,8 @@ in {
           alias assume="source assume"
           source ~/.config/zsh/scripts/aws_pip
         '';
+        initExtra = " eval \"$(fnm env --use-on-cd)\" ";
+
 
         history = {
           expireDuplicatesFirst = true;
