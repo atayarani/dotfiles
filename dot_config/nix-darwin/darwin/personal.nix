@@ -24,11 +24,20 @@
   omp = import ./shared/oh-my-posh.nix;
 in {
   imports = import ./modules;
+
   git = {
     enable = true;
     osUser = hostVars.user;
     userName = "ChronoSerrano";
     userEmail = "619512+ChronoSerrano@users.noreply.github.com";
+  };
+
+  zplug = {
+    enable = true;
+    osUser = hostVars.user;
+    plugins = {
+      fnm = true;
+    };
   };
 
   oh-my-posh = {
@@ -59,15 +68,6 @@ in {
     enable = true;
     osUser = hostVars.user;
     config = {search_shortcut = "CTRL+SPACE";};
-  };
-
-  zplug = {
-    enable = true;
-    osUser = hostVars.user;
-    plugins = {
-      git = true;
-      fnm = true;
-    };
   };
 
   users.users.${hostVars.user} = {
@@ -123,22 +123,22 @@ in {
     brews = [];
     casks = [
       "1password-beta"
-      "sonos"
+      "alacritty"
       "alfred"
-      "obsidian"
-      "tailscale"
+      "espanso"
       "flux"
-      "setapp"
-      "iterm2"
-      "openaudible"
-      "steam"
       "itch"
+      "iterm2"
+      "macupdater"
+      "obsidian"
+      "openaudible"
+      "setapp"
+      "sonos"
+      "steam"
+      "tailscale"
+      "vscodium"
       "zoom"
       "zotero"
-      "alacritty"
-      "espanso"
-      "macupdater"
-      "vscodium"
     ];
     masApps = {
       Infuse = 1136220934;
@@ -147,6 +147,11 @@ in {
     taps = [
       "homebrew/cask-versions"
     ];
+  };
+
+  gh = {
+    inherit (hostVars) user editor;
+    enable = true;
   };
 
   home-manager.users.${hostVars.user} = {
@@ -170,16 +175,16 @@ in {
         enable = true;
         enableZshIntegration = true;
       };
-      gh = {
-        enable = true;
-        settings = {
-          aliases = {
-            co = "pr checkout";
-          };
-          git_protocol = "https";
-          editor = hostVars.editor;
-        };
-      };
+      # gh = {
+      #   enable = true;
+      #   settings = {
+      #     aliases = {
+      #       co = "pr checkout";
+      #     };
+      #     git_protocol = "https";
+      #     editor = hostVars.editor;
+      #   };
+      # };
       neovim = {
         enable = true;
         viAlias = true;
@@ -210,6 +215,7 @@ in {
         initExtra = " eval \"$(fnm env --use-on-cd)\" ";
 
         dotDir = ".config/zsh";
+        zplug = {enable = true;};
       };
     };
 

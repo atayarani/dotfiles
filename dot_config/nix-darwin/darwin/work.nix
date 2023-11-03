@@ -87,7 +87,6 @@ in {
     enable = true;
     osUser = hostVars.user;
     plugins = {
-      git = true;
       pyenv = true;
     };
   };
@@ -139,7 +138,6 @@ in {
           source ~/.config/zsh/scripts/aws_pip
         '';
         initExtra = " eval \"$(fnm env --use-on-cd)\" ";
-
 
         history = {
           expireDuplicatesFirst = true;

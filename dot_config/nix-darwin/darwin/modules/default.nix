@@ -16,4 +16,5 @@
   ./oh-my-posh.nix
   ./espanso.nix
   ./zplug.nix
+  ./gh.nix
 ]

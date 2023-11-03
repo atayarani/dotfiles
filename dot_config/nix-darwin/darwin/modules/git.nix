@@ -4,7 +4,9 @@
   pkgs,
   ...
 }:
-with lib; {
+with lib; let
+  cfg = config.git;
+in {
   options.git = {
     enable = mkEnableOption "git";
     osUser = mkOption {type = types.str;};
@@ -22,10 +24,14 @@ with lib; {
         Git User Email
       '';
     };
+    zplug = mkOption {
+      type = types.bool;
+      default = true;
+    };
   };
 
-  config = mkIf config.git.enable {
-    home-manager.users.${config.git.osUser} = {
+  config = mkIf cfg.enable {
+    home-manager.users.${cfg.osUser} = {
       programs.git = {
         enable = config.git.enable;
         diff-so-fancy = {enable = true;};
@@ -47,6 +53,13 @@ with lib; {
         };
         aliases = {track = "!f() { git branch --set-upstream-to=origin/\"$1\" \"$1\"; }; f";};
       };
+      programs.zsh.zplug.plugins = [
+        (mkIf cfg.zplug {
+          name = "plugins/git";
+          tags = [from:oh-my-zsh];
+        })
+        #git-auto-fetch gitignore
+      ];
     };
   };
 }
