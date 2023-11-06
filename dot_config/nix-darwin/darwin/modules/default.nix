@@ -12,9 +12,11 @@
 #           └─ ...
 #
 [
+  ./aws.nix
+  ./espanso.nix
+  ./gh.nix
   ./git.nix
   ./oh-my-posh.nix
-  ./espanso.nix
   ./zplug.nix
-  ./gh.nix
+  ./python.nix
 ]

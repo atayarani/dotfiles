@@ -9,5 +9,5 @@
     tags = [from:oh-my-zsh];
   };
 
-  pyenv = {name = "mattberther/zsh-pyenv";};
+  # pyenv =
 }

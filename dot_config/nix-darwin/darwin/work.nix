@@ -24,6 +24,7 @@ in {
     systemPackages = [
       # System-Wide Packages
       pkgs.alejandra
+      pkgs.awscli2
       legacy.fnm
     ];
   };
@@ -40,6 +41,11 @@ in {
     osUser = hostVars.user;
     userName = "ChronoSerrano";
     userEmail = "117208915+ChewAli@users.noreply.github.com";
+  };
+
+  aws = {
+    enable = true;
+    osUser = hostVars.user;
   };
 
   oh-my-posh = {
@@ -86,9 +92,7 @@ in {
   zplug = {
     enable = true;
     osUser = hostVars.user;
-    plugins = {
-      pyenv = true;
-    };
+    plugins = {};
   };
 
   nix = {
@@ -96,6 +100,11 @@ in {
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+  };
+
+  python = {
+    enable = true;
+    osUser = hostVars.user;
   };
 
   home-manager.users.${hostVars.user} = {pkgs, ...}: {
@@ -107,7 +116,7 @@ in {
         PATH = "$HOME/.nix-profile/bin:/run/current-system/sw/bin/:$HOME/.config/zsh/scripts:/opt/homebrew/bin:$PATH";
         GRANTED_ALIAS_CONFIGURED = "true";
       };
-      file.".config/zsh/scripts/aws_pip".source = ../scripts/aws_pip;
+      file.".config/zsh/scripts/aws_pip".source = ../scripts/aws_pip; # @TODO: move to aws.nix
     };
     xdg = {enable = true;};
 
@@ -122,7 +131,7 @@ in {
         defaultEditor = true;
         viAlias = true;
         vimAlias = true;
-        #        vimDiffAlias = true;
+        vimdiffAlias = true;
       };
       zsh = {
         enable = true;
@@ -136,7 +145,7 @@ in {
         envExtra = ''
           alias assume="source assume"
           source ~/.config/zsh/scripts/aws_pip
-        '';
+        ''; # @TODO: move aws_pip to aws.nix
         initExtra = " eval \"$(fnm env --use-on-cd)\" ";
 
         history = {

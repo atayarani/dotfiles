@@ -15,7 +15,7 @@ in {
     plugins = {
       fnm = mkEnableOption "fnm";
       # git = mkEnableOption "git";
-      pyenv = mkEnableOption "pyenv";
+      # pyenv = mkEnableOption "pyenv";
     };
   };
 
@@ -25,7 +25,7 @@ in {
       plugins = [
         # (mkIf cfg.plugins.git plugins.git)
         (mkIf cfg.plugins.fnm plugins.fnm)
-        (mkIf cfg.plugins.pyenv plugins.pyenv)
+        # (mkIf cfg.plugins.pyenv plugins.pyenv)
       ];
     };
   };
