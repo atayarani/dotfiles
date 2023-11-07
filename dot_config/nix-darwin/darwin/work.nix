@@ -29,10 +29,10 @@ in {
     ];
   };
 
-  users.users.${hostVars.user} = {
+  users.users.${hostVars.user} = with hostVars; {
     # MacOS User
-    name = hostVars.user;
-    home = "/Users/${hostVars.user}";
+    name = user;
+    home = "/Users/${user}";
     shell = pkgs.zsh; # Default Shell
   };
 

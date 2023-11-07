@@ -24,12 +24,21 @@
   omp = import ./shared/oh-my-posh.nix;
 in {
   imports = import ./modules;
+  nixpkgs.config.allowUnfree = true;
 
   git = {
     enable = true;
     osUser = hostVars.user;
     userName = "ChronoSerrano";
     userEmail = "619512+ChronoSerrano@users.noreply.github.com";
+  };
+
+  vscode = {
+    enable = true;
+    osUser = hostVars.user;
+    # additionalPlugins = with legacy.vscode-extensions; [
+    #   ms-python.python
+    # ];
   };
 
   zplug = {
@@ -75,10 +84,10 @@ in {
     osUser = hostVars.user;
   };
 
-  users.users.${hostVars.user} = {
+  users.users.${hostVars.user} = with hostVars; {
     # MacOS User
-    name = hostVars.user;
-    home = "/Users/${hostVars.user}";
+    name = user;
+    home = "/Users/${user}";
     shell = pkgs.zsh; # Default Shell
   };
 
@@ -136,7 +145,6 @@ in {
       "sonos"
       "steam"
       "tailscale"
-      "vscodium"
       "zoom"
       "zotero"
       "handbrake"
@@ -175,12 +183,12 @@ in {
         enable = true;
         enableZshIntegration = true;
       };
-      go = {enable = true;};
-      gpg = {enable = true;};
-      jq = {enable = true;};
-      pandoc = {enable = true;};
-      ssh = {enable = true;};
-      tealdeer = {enable = true;};
+      go.enable = true;
+      gpg.enable = true;
+      jq.enable = true;
+      pandoc.enable = true;
+      ssh.enable = true;
+      tealdeer.enable = true;
       zoxide = {
         enable = true;
         enableZshIntegration = true;
@@ -195,10 +203,10 @@ in {
         initExtra = " eval \"$(fnm env --use-on-cd)\" ";
 
         dotDir = ".config/zsh";
-        zplug = {enable = true;};
+        zplug.enable = true;
       };
     };
 
-    xdg = {enable = true;};
+    xdg.enable = true;
   };
 }

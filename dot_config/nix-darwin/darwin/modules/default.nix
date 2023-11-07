@@ -20,4 +20,5 @@
   ./python.nix
   ./tmux.nix
   ./zplug.nix
+  ./vscode.nix
 ]
