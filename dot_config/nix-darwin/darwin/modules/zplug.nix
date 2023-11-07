@@ -14,8 +14,6 @@ in {
 
     plugins = {
       fnm = mkEnableOption "fnm";
-      # git = mkEnableOption "git";
-      # pyenv = mkEnableOption "pyenv";
     };
   };
 
@@ -23,9 +21,7 @@ in {
     home-manager.users.${cfg.osUser}.programs.zsh.zplug = mkIf cfg.enable {
       enable = cfg.enable;
       plugins = [
-        # (mkIf cfg.plugins.git plugins.git)
         (mkIf cfg.plugins.fnm plugins.fnm)
-        # (mkIf cfg.plugins.pyenv plugins.pyenv)
       ];
     };
   };

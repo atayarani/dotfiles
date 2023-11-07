@@ -70,6 +70,11 @@ in {
     config = {search_shortcut = "CTRL+SPACE";};
   };
 
+  tmux = {
+    enable = true;
+    osUser = hostVars.user;
+  };
+
   users.users.${hostVars.user} = {
     # MacOS User
     name = hostVars.user;
@@ -79,11 +84,7 @@ in {
 
   environment = {
     shells = with pkgs; [zsh]; # Default Shell
-    variables = {
-      # Environment Variables
-      EDITOR = "${hostVars.editor}";
-      VISUAL = "${hostVars.editor}";
-    };
+    variables = {};
     systemPackages = [
       # System-Wide Packages
       pkgs.alejandra
@@ -125,7 +126,6 @@ in {
       "1password-beta"
       "alacritty"
       "alfred"
-      "espanso"
       "flux"
       "itch"
       "iterm2"
@@ -139,6 +139,7 @@ in {
       "vscodium"
       "zoom"
       "zotero"
+      "handbrake"
     ];
     masApps = {
       Infuse = 1136220934;
@@ -157,7 +158,6 @@ in {
   home-manager.users.${hostVars.user} = {
     home = {
       sessionVariables = {
-        EDITOR = hostVars.editor;
         PATH = "$HOME/.nix-profile/bin:/run/current-system/sw/bin/:$HOME/.config/zsh/scripts:/opt/homebrew/bin:$PATH";
       };
       stateVersion = "23.05";
@@ -175,32 +175,12 @@ in {
         enable = true;
         enableZshIntegration = true;
       };
-      # gh = {
-      #   enable = true;
-      #   settings = {
-      #     aliases = {
-      #       co = "pr checkout";
-      #     };
-      #     git_protocol = "https";
-      #     editor = hostVars.editor;
-      #   };
-      # };
-      neovim = {
-        enable = true;
-        viAlias = true;
-        vimAlias = true;
-        vimdiffAlias = true;
-      };
       go = {enable = true;};
       gpg = {enable = true;};
       jq = {enable = true;};
       pandoc = {enable = true;};
       ssh = {enable = true;};
       tealdeer = {enable = true;};
-      tmux = {
-        enable = true;
-        clock24 = true;
-      };
       zoxide = {
         enable = true;
         enableZshIntegration = true;
