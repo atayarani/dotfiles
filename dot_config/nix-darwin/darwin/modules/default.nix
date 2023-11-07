@@ -17,6 +17,7 @@
   ./gh.nix
   ./git.nix
   ./oh-my-posh.nix
-  ./zplug.nix
   ./python.nix
+  ./tmux.nix
+  ./zplug.nix
 ]

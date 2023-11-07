@@ -47,5 +47,7 @@ in {
       xdg.configFile.${espansoConfig}.source = generateYaml "espansoConfig" cfg.config;
       xdg.configFile.${espansoMatch}.source = generateYaml "espansoMatch" {matches = cfg.match ++ matches;};
     };
+
+    homebrew.casks = ["espanso"];
   };
 }
