@@ -12,6 +12,7 @@
 in {
   imports = import ./modules;
 
+  nixpkgs.config.allowUnfree = true;
   services = {nix-daemon.enable = true;}; # Auto-Upgrade Daemon
 
   environment = {
@@ -26,6 +27,15 @@ in {
       pkgs.alejandra
       pkgs.awscli2
       legacy.fnm
+    ];
+  };
+
+  vscode = {
+    enable = true;
+    osUser = hostVars.user;
+    additionalPlugins = with legacy.vscode-extensions; [
+      ms-python.python
+      redhat.vscode-yaml
     ];
   };
 
