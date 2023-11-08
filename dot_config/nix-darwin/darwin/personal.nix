@@ -73,11 +73,11 @@ in {
     ];
   };
 
-  espanso = {
-    enable = true;
-    osUser = hostVars.user;
-    config = {search_shortcut = "CTRL+SPACE";};
-  };
+  # espanso = {
+  #   enable = true;
+  #   osUser = hostVars.user;
+  #   config = {search_shortcut = "CTRL+SPACE";};
+  # };
 
   tmux = {
     enable = true;

@@ -8,30 +8,30 @@ with lib; let
   cfg = config.espanso;
   generateYaml = (pkgs.formats.yaml {}).generate;
 
-  espansoConfig = "espanso/config/default.yaml";
-  espansoMatch = "espanso/match/base.yaml";
+  espansoConfig = "espanso/config/default.yml";
+  espansoMatch = "espanso/match/base.yml";
   matches = [
-    {
-      trigger = ":espanso";
-      replace = "Hi there!";
-    }
-    {
-      trigger = ":date";
-      replace = "{{mydate}}";
-      vars = [
-        {
-          name = "mydate";
-          type = "date";
-          params = {
-            format = "%m/%d/%Y";
-          };
-        }
-      ];
-    }
-    {
-      trigger = ":anon-email";
-      replace = "b2lrzgvraw.anonaddy.me";
-    }
+    # {
+    #   trigger = ":espanso";
+    #   replace = "Hi there!";
+    # }
+    # {
+    #   trigger = ":date";
+    #   replace = "{{mydate}}";
+    #   vars = [
+    #     {
+    #       name = "mydate";
+    #       type = "date";
+    #       params = {
+    #         format = "%m/%d/%Y";
+    #       };
+    #     }
+    #   ];
+    # }
+    # {
+    #   trigger = ":anon-email";
+    #   replace = "b2lrzgvraw.anonaddy.me";
+    # }
   ];
 in {
   options.espanso = {
