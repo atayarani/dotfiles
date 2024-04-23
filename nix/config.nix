@@ -11,7 +11,7 @@ in
       name = lib.mkOption {
         type = lib.types.str;
         description = "The default username to use throughout this flake.";
-        default = "midchildan";
+        default = "ali";
       };
 
       fullName = lib.mkOption {
@@ -26,11 +26,11 @@ in
         default = "git@${cfg.user.name}.org";
       };
 
-      pgpKey = lib.mkOption {
-        type = lib.types.str;
-        description = "The default PGP key to use throughout this flake.";
-        default = "5AC3E26C62BB5AAEC79DEDB5BA2B2D09C65A909B";
-      };
+      #pgpKey = lib.mkOption {
+        #type = lib.types.str;
+        #description = "The default PGP key to use throughout this flake.";
+        #default = "5AC3E26C62BB5AAEC79DEDB5BA2B2D09C65A909B";
+      #};
     };
 
     nix.package = lib.mkOption {
