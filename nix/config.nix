@@ -26,11 +26,11 @@ in
         default = "git@${cfg.user.name}.org";
       };
 
-      #pgpKey = lib.mkOption {
-        #type = lib.types.str;
-        #description = "The default PGP key to use throughout this flake.";
-        #default = "5AC3E26C62BB5AAEC79DEDB5BA2B2D09C65A909B";
-      #};
+      pgpKey = lib.mkOption {
+        type = lib.types.str;
+        description = "The default PGP key to use throughout this flake.";
+        default = "67654DA01D56BC17C7D1B4DDF90924651F6C2BB9";
+      };
     };
 
     nix.package = lib.mkOption {
