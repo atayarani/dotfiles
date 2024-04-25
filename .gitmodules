@@ -1,9 +1,0 @@
-[submodule "files/.local/opt/peda"]
-	path = files/.local/opt/peda
-	url = https://github.com/longld/peda.git
-[submodule "files/.local/opt/gef"]
-	path = files/.local/opt/gef
-	url = https://github.com/hugsy/gef.git
-[submodule "files/.local/opt/tldr"]
-	path = files/.local/opt/tldr
-	url = https://github.com/tldr-pages/tldr.git

@@ -1,8 +1,0 @@
-.netrwhist
-autoload/plug.vim
-autoload/plug.vim.old
-plugin/hmvars.vim
-pack
-plugged
-spell
-*.pyc

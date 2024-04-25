@@ -1,4 +1,10 @@
-{ config, lib, pkgs, dotfiles, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  dotfiles,
+  ...
+}:
 
 let
   inherit (lib) mkDefault mkEnableOption mkIf;
@@ -6,18 +12,17 @@ let
   myPkgs = dotfiles.packages.${system};
 in
 {
-  options.dotfiles.profiles.macos.enable =
-    mkEnableOption "nice defaults for macOS preferences";
+  options.dotfiles.profiles.macos.enable = mkEnableOption "nice defaults for macOS preferences";
 
   config = mkIf config.dotfiles.profiles.macos.enable {
     targets.darwin = {
       defaults = {
         NSGlobalDomain = {
           # Locale
-          AppleLanguages = mkDefault [ "en" "ja" ];
-          AppleLocale = mkDefault "en_JP";
-          AppleMeasurementUnits = mkDefault "Centimeters";
-          AppleMetricUnits = mkDefault true;
+          AppleLanguages = mkDefault [ "en" ];
+          #AppleLocale = mkDefault "en_JP";
+          #AppleMeasurementUnits = mkDefault "Centimeters";
+          #AppleMetricUnits = mkDefault true;
           # Tame auto-correct
           NSAutomaticCapitalizationEnabled = mkDefault false;
           NSAutomaticDashSubstitutionEnabled = mkDefault false;
@@ -76,42 +81,6 @@ in
       keybindings = {
         "^u" = mkDefault "deleteToBeginningOfLine:";
         "^w" = mkDefault "deleteWordBackward:";
-      };
-    };
-
-    dotfiles.aquaskk = {
-      enable = mkDefault true;
-      config = {
-        beep_on_registration = mkDefault false;
-        enable_annotation = mkDefault true;
-        enable_dynamic_completion = mkDefault true;
-        enable_extended_completion = mkDefault true;
-        show_input_mode_icon = mkDefault true;
-      };
-      dictionaries = {
-        "SKK-JISYO.L" = {
-          type = "euc-jp";
-          priority = 70;
-          location = "${myPkgs.skk-jisyo-l}/share/skk/SKK-JISYO.L";
-        };
-        "SKK-JISYO.propernoun" = {
-          type = "euc-jp";
-          location = "${myPkgs.skk-jisyo-propernoun}/share/skk/SKK-JISYO.propernoun";
-        };
-        "SKK-JISYO.zipcode" = {
-          type = "euc-jp";
-          location = "${myPkgs.skk-jisyo-zipcode}/share/skk/SKK-JISYO.zipcode";
-        };
-        "SKK-JISYO.office.zipcode" = {
-          type = "euc-jp";
-          location = "${myPkgs.skk-jisyo-zipcode}/share/skk/SKK-JISYO.office.zipcode";
-        };
-        "SKK-JISYO.emoji" = {
-          type = "utf-8";
-          priority = 30;
-          location = "${myPkgs.skk-jisyo-emoji}/share/skk/SKK-JISYO.emoji";
-        };
-        program.type = "program";
       };
     };
   };

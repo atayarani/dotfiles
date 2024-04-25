@@ -1,4 +1,9 @@
-{ lib, flake-parts-lib, inputs, ... }:
+{
+  lib,
+  flake-parts-lib,
+  inputs,
+  ...
+}:
 
 let
   inherit (flake-parts-lib) importApply;
@@ -30,7 +35,9 @@ in
     inherit flakeModules;
   };
 
-  perSystem = { pkgs, ... }: {
-    formatter = pkgs.nixpkgs-fmt;
-  };
+  perSystem =
+    { pkgs, ... }:
+    {
+      formatter = pkgs.nixpkgs-fmt;
+    };
 }

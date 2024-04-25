@@ -10,11 +10,11 @@ in
 
   home-manager.users.${username} = {
     dotfiles.profiles = {
-      enableAll = true;
+      # enableAll = true;
       extras.enable = false;
     };
-    home.stateVersion = "23.11";
+    home.stateVersion = "24.05";
   };
 
-  system.stateVersion = 4;
+  system.stateVersion = 5;
 }

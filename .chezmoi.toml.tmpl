@@ -1,0 +1,4 @@
+{{- $system_type := promptStringOnce . "system_type" "Personal or Work computer" -}}
+
+[data]
+  system_type = {{ $system_type | quote }}

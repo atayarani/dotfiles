@@ -4,9 +4,7 @@ let
   inherit (config.dotfiles.profiles.interactive) username;
 in
 {
-  imports = [
-    "${modulesPath}/virtualisation/qemu-vm.nix"
-  ];
+  imports = [ "${modulesPath}/virtualisation/qemu-vm.nix" ];
 
   dotfiles.profiles = {
     interactive.enable = true;
@@ -16,5 +14,5 @@ in
 
   users.users.${username}.password = "";
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }
