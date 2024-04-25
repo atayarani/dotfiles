@@ -9,6 +9,7 @@
       ./modules/nix.nix
       ./modules/shell.nix
       ./profiles/apps.nix
+      ./profiles/work.nix
     ];
 
     options.dotfiles = {

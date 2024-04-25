@@ -1,13 +1,17 @@
 {
   imports = [
-    ./aquaskk.nix
     ./gnupg
     ./emacs.nix
     ./firefox.nix
-    ./git
+    ./git.nix
     ./linkapps.nix
     ./manpages.nix
     ./nix.nix
     ./vim.nix
+    ./oh-my-posh.nix
+    ./zsh.nix
+    ./chezmoi.nix
+    ./ripgrep.nix
+    ./pandoc.nix
   ];
 }

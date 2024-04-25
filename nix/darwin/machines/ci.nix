@@ -1,16 +1,14 @@
 { config, ... }:
 
-let
-  username = config.dotfiles.flakeOptions.user.name;
-in
-{
+let username = config.dotfiles.flakeOptions.user.name;
+in {
   users.users.${username}.home = "/Users/${username}";
 
   dotfiles.profiles.apps.enable = true;
 
   home-manager.users.${username} = {
     dotfiles.profiles = {
-      enableAll = true;
+      # enableAll = true;
       extras.enable = false;
     };
     home.stateVersion = "23.11";

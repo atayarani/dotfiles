@@ -9,7 +9,7 @@
     # App Store installations. Any formula or cask not specified in the config
     # would be automatically uninstalled by default.
     homebrew = {
-      enable = lib.mkDefault true;
+      enable = lib.mkDefault false;
       onActivation = {
         autoUpdate = lib.mkDefault true;
         upgrade = lib.mkDefault true;

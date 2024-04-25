@@ -4,10 +4,10 @@
 > zsh included in this dotfiles. It's triggered by pressing `^X^J` in insert
 > mode, and the placeholders can be replaced by pressing `^J` also in insert
 > mode.
->
+
 > The format of this file is derived from tldr-pages.
 > More info: <https://github.com/tldr-pages/tldr/blob/master/contributing-guides/style-guide.md>
->
+
 > Some snippets may include zsh-specific syntax.
 
 - Run Ansible playbook on localhost:

@@ -1,0 +1,3 @@
+{ lib, pkgs, ... }:
+
+{programs.pandoc.enable = true;}

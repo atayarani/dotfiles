@@ -1,5 +1,0 @@
----
-- import_playbook: proxy.yml
-- import_playbook: userns.yml
-- import_playbook: nix.yml
-- import_playbook: dotfiles.yml

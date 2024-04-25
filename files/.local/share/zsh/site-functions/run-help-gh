@@ -1,3 +1,0 @@
-emulate -L zsh
-
-autoload -Uz run-help-generic && run-help-generic gh "$@"

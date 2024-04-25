@@ -12,6 +12,9 @@ in
     "${username}@demo" = importHome ./ci.nix {
       pkgs = pkgsFor "x86_64-linux";
     };
+    "${username}@victus" = importHome ./victus.nix {
+      pkgs = pkgsFor "x86_64-linux";
+    };
   };
 
   perSystem = { pkgs, ... }: {

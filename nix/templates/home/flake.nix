@@ -27,7 +27,7 @@
           modules = [{
             # Options are defined in:
             # https://github.com/midchildan/dotfiles/blob/nix/home
-            dotfiles.profiles.enableAll = true;
+            # dotfiles.profiles.enableAll = true;
             home.stateVersion = "23.11";
           }];
         };

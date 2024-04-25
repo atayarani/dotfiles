@@ -39,14 +39,13 @@ in
         git
         netcat
         whois
-        myPkgs.terminfo-collection
       ] ++ lib.optionals isDarwin [
         ssh-copy-id
         watch
       ];
 
     dotfiles = {
-      git.enableDelta = lib.mkDefault true;
+      # git.enableDelta = lib.mkDefault true;
       manpages.colorize = lib.mkDefault true;
     };
   };

@@ -23,7 +23,6 @@ in
         less
         ripgrep
         zsh-syntax-highlighting
-        myPkgs.neovim
       ];
 
     programs.direnv = {
