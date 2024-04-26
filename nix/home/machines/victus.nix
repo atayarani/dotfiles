@@ -21,7 +21,6 @@ in
 
   oh-my-posh = {
     enable = true;
-    # osUser = "ali";
     theme = omp_theme.mocha;
     blocks = [
       {
