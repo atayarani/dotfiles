@@ -12,7 +12,6 @@ in {
     nixfmt-rfc-style
     nil
     fnm
-    fzf
   ];
 
   dotfiles.profiles.work.enable = true;
@@ -20,6 +19,8 @@ in {
   home-manager.users.${username} = {
     dotfiles.alacritty.enable = true;
     dotfiles.fzf.enable = true;
+    dotfiles.eza.enable = true;
+    dotfiles.fd.enable = true;
 
     dotfiles.git = {
       enable = true;

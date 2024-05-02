@@ -13,15 +13,15 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.alacritty = {
-        enable = true;
-        settings = {
+      enable = true;
+      settings = {
         font = {
-            normal.family = "JetBrainsMono Nerd Font Mono";
-            size = 13;
-            offset.y = 2;
+          normal.family = "JetBrainsMono Nerd Font Mono";
+          size = 13;
+          offset.y = 2;
         };
         import = [ "$HOME/.config/alacritty/themes/catppuccino-mocha.toml" ];
-        };
+      };
     };
   };
 }

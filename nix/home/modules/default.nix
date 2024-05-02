@@ -15,5 +15,7 @@
     ./pandoc.nix
     ./alacritty.nix
     ./fzf.nix
+    ./eza.nix
+    ./fd.nix
   ];
 }

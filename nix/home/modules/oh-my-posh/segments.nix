@@ -14,7 +14,9 @@
       style = "powerline";
       powerline_symbol = "";
       type = "session";
-      properties = {template = "{{ .UserName }}";};
+      properties = {
+        template = "{{ .UserName }}";
+      };
     };
     git = {
       background = "p:git_bg";
@@ -33,13 +35,17 @@
       foreground = "p:aws_fg";
       background = "p:aws_bg";
       powerline_symbol = "";
-      properties = {template = "   {{.Profile}}{{if .Region}}@{{.Region}}{{end}}";};
+      properties = {
+        template = "   {{.Profile}}{{if .Region}}@{{.Region}}{{end}}";
+      };
     };
     node = {
       type = "node";
       foreground = "#6CA35E";
       style = "powerline";
-      properties = {template = "|  {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ";};
+      properties = {
+        template = "|  {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ";
+      };
     };
     python = {
       type = "python";
@@ -69,7 +75,9 @@
       type = "time";
       foreground = "lightGreen";
       style = "plain";
-      properties = {template = "| {{ .CurrentDate | date .Format }} ";};
+      properties = {
+        template = "| {{ .CurrentDate | date .Format }} ";
+      };
     };
     path = {
       background = "p:path_bg";
@@ -89,7 +97,7 @@
       style = "diamond";
       foreground = "#ffffff";
       background = "#00897b";
-      background_templates = ["{{ if .Error }}#e91e63{{ end }}"];
+      background_templates = [ "{{ if .Error }}#e91e63{{ end }}" ];
       trailing_diamond = "";
       template = "<#193549></>  ";
       properties = {
@@ -98,4 +106,3 @@
     };
   };
 }
-

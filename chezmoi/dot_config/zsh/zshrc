@@ -1,0 +1,4 @@
+export PATH="$HOME/.config/emacs/bin:/etc/profiles/per-user/$USER/bin:/run/current-system/sw/bin/:$PATH"
+alias assume="source assume"
+source $HOME/.cargo/env
+source $HOME/.config/zsh/fzf-git.sh
