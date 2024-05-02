@@ -2,3 +2,4 @@
 # there are conflicting settings, whichever comes first should take precedence.
 # See glob(3) and ssh_config(5) for details
 Include ~/.ssh/config.d/*.conf
+Include ~/.orbstack/ssh/config

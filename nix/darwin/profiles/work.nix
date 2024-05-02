@@ -21,17 +21,20 @@
       };
 
     brews = [
+        "aws-cdk"
         "aws-sso-util"
-        "granted"
-        "python@3.10"
-        "tpm"
-        "tmuxinator"
+        "awscli"
+        "coreutils" # GNU coreutils (ls, cat, etc.)
         "emacs"
         "fontconfig" # Required for emacs and doesn't work through nix for some reason
+        "granted"
         "grep" # GNU grep
+        "python@3.10"
         "shellcheck"
-        "coreutils" # GNU coreutils (ls, cat, etc.)
-        "awscli"
+        "tfenv"
+        "tmuxinator"
+        "tpm"
+        "poetry"
     ];
     casks = [
       "alacritty"
@@ -39,6 +42,7 @@
       "font-jetbrains-mono-nerd-font"
       "iterm2"
       "tailscale"
+      "orbstack"
     ];
     masApps = {};
     taps = [

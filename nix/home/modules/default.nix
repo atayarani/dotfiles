@@ -13,5 +13,7 @@
     ./chezmoi.nix
     ./ripgrep.nix
     ./pandoc.nix
+    ./alacritty.nix
+    ./fzf.nix
   ];
 }

@@ -16,12 +16,20 @@
 
     envExtra = ''
       export PATH=$HOME/bin:/etc/profiles/per-user/$USER/bin:/run/current-system/sw/bin/:/usr/local/bin:$PATH
+      eval "$(fnm env --use-on-cd)"
     '';
 
     initExtraFirst = ''
       if [ -f $HOME/.config/zsh/zshrc ]; then
         source $HOME/.config/zsh/zshrc
       fi
+    '';
+
+    initExtra=''
+        export FZF_DEFAULT_OPTS=" \
+        --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+        --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+        --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
     '';
 
     history = {

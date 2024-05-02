@@ -5,22 +5,22 @@ let
   omp = import ../../home/modules/oh-my-posh/segments.nix;
   omp_theme = import ../../home/modules/oh-my-posh/themes.nix;
 in {
-  # imports = [
-  #   ../../home/modules/oh-my-posh.nix
-  # ];
+
   users.users.${username}.home = "/Users/${username}";
 
   environment.systemPackages = with pkgs; [
-    nixfmt
+    nixfmt-rfc-style
     nil
-    # oh-my-posh
-    # macOS GUI programs
-    # wezterm
+    fnm
+    fzf
   ];
 
   dotfiles.profiles.work.enable = true;
 
   home-manager.users.${username} = {
+    dotfiles.alacritty.enable = true;
+    dotfiles.fzf.enable = true;
+
     dotfiles.git = {
       enable = true;
       userName = "Ali Tayarani";
