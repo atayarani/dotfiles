@@ -29,9 +29,6 @@ in
       ++ lib.optionals isLinux [ distrobox ]
       ++ lib.optionals isNixOS [ man-pages ];
 
-    dotfiles.gnupg = {
-      enable = lib.mkDefault true;
-      enablePackage = lib.mkDefault (!isNixOS); # use the NixOS module instead
-    };
+
   };
 }

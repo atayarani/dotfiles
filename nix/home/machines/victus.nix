@@ -1,8 +1,6 @@
-{ pkgs, flake, ... }:
+{ pkgs, ... }:
 
 let
-  inherit (flake) inputs;
-  inherit (inputs) self;
   omp = import ../modules/oh-my-posh/segments.nix;
   omp_theme = import ../modules/oh-my-posh/themes.nix;
 in
@@ -17,9 +15,13 @@ in
     ../modules/emacs.nix
   ];
 
-  # dotfiles.profiles.enableAll = true;
+  dotfiles.git = {
+    enable = true;
+    userName = "Ali Tayarani";
+    userEmail = "619512+atayarani@users.noreply.github.com";
+  };
 
-  oh-my-posh = {
+  dotfiles.oh-my-posh = {
     enable = true;
     theme = omp_theme.mocha;
     blocks = [
@@ -50,4 +52,5 @@ in
       omp.segments.status
     ];
   };
+  home.stateVersion = "23.11";
 }
