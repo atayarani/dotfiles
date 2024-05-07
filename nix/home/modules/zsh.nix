@@ -17,17 +17,14 @@
         name = "plugins/git";
         tags = [ "from:oh-my-zsh" ];
       }
-      {
-        name = "plugins/aws";
-        tags = [ "from:oh-my-zsh" ];
-      }
-      { name = "unixorn/fzf-zsh-plugin";}
-      { name = "junegunn/fzf-git.sh"; }
+      { name = "unixorn/fzf-zsh-plugin"; }
     ];
 
     envExtra = ''
       export PATH=$HOME/bin:/etc/profiles/per-user/$USER/bin:/run/current-system/sw/bin/:/usr/local/bin:$PATH
       eval "$(fnm env --use-on-cd)"
+      export COLORTERM=truecolor
+      export TERM=xterm-256color
     '';
 
     initExtraFirst = ''
@@ -35,7 +32,16 @@
         source $HOME/.config/zsh/zshrc
       fi
       export PATH=$HOME/.nix-profile/bin:$PATH
+      export XDG_CONFIG_HOME=$HOME/.config
+      export XDG_DATA_HOME=$HOME/.local/share
+      export XDG_CACHE_HOME=$HOME/.cache
+      export XDG_RUNTIME_DIR=/run/user/$(id -u)
+      export XDG_STATE_HOME=$HOME/.local/state
     '';
+
+    shellAliases = {
+      cat = "bat";
+    };
 
     history = {
       expireDuplicatesFirst = true;

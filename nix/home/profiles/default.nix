@@ -11,6 +11,9 @@
     ./fonts.nix
     ./macos.nix
     ./web.nix
+    ./work.nix
+    ./terminal.nix
+    ./python.nix
   ];
 
   # options.dotfiles.profiles.enableAll =

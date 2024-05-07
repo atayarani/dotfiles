@@ -24,7 +24,7 @@ in
         final_space = true;
         pwd = "osc99";
         shell_integration = true;
-        blocks = cfg.blocks;
+        blocks = lists.flatten cfg.blocks;
         palette = cfg.theme;
       };
     };

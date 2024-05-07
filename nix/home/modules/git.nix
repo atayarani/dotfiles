@@ -8,6 +8,7 @@
 let
   cfg = config.dotfiles.git;
   username = config.dotfiles.flakeOptions.user.name;
+  delta_themes = import ./delta/themes.nix;
 in
 {
   options.dotfiles.git = {
@@ -30,9 +31,19 @@ in
       userName = cfg.userName;
       userEmail = cfg.userEmail;
 
-      diff-so-fancy.enable = true;
+      delta = {
+        enable = true;
+        options = {
+          features = "decorations";
+          decorations = delta_themes.catppuccin-mocha;
+          navigate = true;
+          side-by-side = true;
+          true-color = "always";
+        };
+      };
       lfs.enable = true;
       ignores = [ ];
+      includes = [ ];
       extraConfig = {
         color.ui = true;
         core.hooksPath = "$HOME/.config/git/hooks";
@@ -42,7 +53,8 @@ in
         pull.rebase = true;
         push.default = "current";
         rebase.autoSquash = true;
-        rebase.autostash = true;
+        rebase.autoStash = true;
+        merge.conflictStyle = "diff3";
       };
       aliases = {
         track = "!f() { git branch --set-upstream-to=origin/\"$1\" \"$1\"; }; f";

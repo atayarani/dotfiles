@@ -1,21 +1,24 @@
 {
   imports = [
     ./gnupg
+    ./alacritty.nix
+    ./aws.nix
+    ./bat.nix
+    ./chezmoi.nix
     ./emacs.nix
+    ./eza.nix
+    ./fd.nix
     ./firefox.nix
+    ./fzf.nix
     ./git.nix
     ./linkapps.nix
     ./manpages.nix
+    ./mcfly.nix
     ./nix.nix
-    ./vim.nix
     ./oh-my-posh.nix
-    ./zsh.nix
-    ./chezmoi.nix
-    ./ripgrep.nix
     ./pandoc.nix
-    ./alacritty.nix
-    ./fzf.nix
-    ./eza.nix
-    ./fd.nix
+    ./ripgrep.nix
+    ./zoxide.nix
+    ./zsh.nix
   ];
 }

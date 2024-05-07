@@ -1,15 +1,21 @@
-{ config, lib, pkgs, dotfiles, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  dotfiles,
+  ...
+}:
 
 let
   inherit (pkgs.stdenv.hostPlatform) isDarwin system;
   myPkgs = dotfiles.packages.${system};
 in
 {
-  options.dotfiles.profiles.essential.enable =
-    lib.mkEnableOption "essential packages for servers and desktops alike";
+  options.dotfiles.profiles.essential.enable = lib.mkEnableOption "essential packages for servers and desktops alike";
 
   config = lib.mkIf config.dotfiles.profiles.essential.enable {
-    home.packages = with pkgs;
+    home.packages =
+      with pkgs;
       [
         bat
         broot
@@ -32,14 +38,16 @@ in
         zsh-completions
         gitAndTools.git-absorb
         nodePackages.prettier
-      ] ++ lib.optionals (!isDarwin) [
+      ]
+      ++ lib.optionals (!isDarwin) [
         dnsutils
         file
         libarchive
         git
         netcat
         whois
-      ] ++ lib.optionals isDarwin [
+      ]
+      ++ lib.optionals isDarwin [
         ssh-copy-id
         watch
       ];

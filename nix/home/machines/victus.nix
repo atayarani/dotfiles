@@ -1,6 +1,6 @@
 { pkgs, flake, ... }:
 
-let 
+let
   inherit (flake) inputs;
   inherit (inputs) self;
   omp = import ../modules/oh-my-posh/segments.nix;
@@ -9,7 +9,7 @@ in
 {
   imports = [
     ../modules/zsh.nix
-    ../modules/oh-my-posh.nix    
+    ../modules/oh-my-posh.nix
     ../modules/git.nix
     ../modules/chezmoi.nix
     ../modules/ripgrep.nix
@@ -26,18 +26,26 @@ in
       {
         alignment = "left";
         type = "prompt";
-        segments = with omp.segments; [os session git aws];
+        segments = with omp.segments; [
+          os
+          session
+          git
+          aws
+        ];
       }
       {
         alignment = "right";
         type = "prompt";
-        segments = with omp.segments; [node python];
+        segments = with omp.segments; [
+          node
+          python
+        ];
       }
       {
         alignment = "left";
         type = "prompt";
         newline = true;
-        segments = with omp.segments; [path];
+        segments = with omp.segments; [ path ];
       }
       omp.segments.status
     ];

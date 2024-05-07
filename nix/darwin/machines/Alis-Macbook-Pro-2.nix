@@ -2,9 +2,8 @@
 
 let
   username = config.dotfiles.flakeOptions.user.name;
-  omp = import ../../home/modules/oh-my-posh/segments.nix;
-  omp_theme = import ../../home/modules/oh-my-posh/themes.nix;
-in {
+in
+{
 
   users.users.${username}.home = "/Users/${username}";
 
@@ -17,43 +16,9 @@ in {
   dotfiles.profiles.work.enable = true;
 
   home-manager.users.${username} = {
-    dotfiles.alacritty.enable = true;
-    dotfiles.fzf.enable = true;
-    dotfiles.eza.enable = true;
-    dotfiles.fd.enable = true;
-
-    dotfiles.git = {
-      enable = true;
-      userName = "Ali Tayarani";
-      userEmail = "117208915+ChewAli@users.noreply.github.com";
-    };
-
-    dotfiles.oh-my-posh = {
-      enable = true;
-      theme = omp_theme.mocha;
-      blocks = [
-        {
-          alignment = "left";
-          type = "prompt";
-          segments = with omp.segments; [ os session git aws ];
-        }
-        {
-          alignment = "right";
-          type = "prompt";
-          segments = with omp.segments; [ node python ];
-        }
-        {
-          alignment = "left";
-          type = "prompt";
-          newline = true;
-          segments = with omp.segments; [ path ];
-        }
-        omp.segments.status
-      ];
-    };
+    dotfiles.profiles.work.enable = true;
     home.stateVersion = "23.11";
   };
 
   system.stateVersion = 4;
-
 }
