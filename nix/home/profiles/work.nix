@@ -54,6 +54,10 @@ in
         userName = "Ali Tayarani";
         userEmail = "117208915+ChewAli@users.noreply.github.com";
       };
+      zsh = {
+        enable = true;
+        runtime_dir = "$HOME/Library/Caches/TemporaryItems";
+      };
     };
   };
 }
