@@ -7,7 +7,6 @@
 
 let
   cfg = config.dotfiles.git;
-  username = config.dotfiles.flakeOptions.user.name;
   delta_themes = import ./delta/themes.nix;
 in
 {

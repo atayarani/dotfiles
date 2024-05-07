@@ -14,6 +14,7 @@
     ./work.nix
     ./terminal.nix
     ./python.nix
+    ./personal.nix
   ];
 
   # options.dotfiles.profiles.enableAll =

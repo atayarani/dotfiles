@@ -88,15 +88,6 @@ in
           excludePackages = [ pkgs.xterm ];
         };
 
-<<<<<<< HEAD
-        programs.gnupg.agent = {
-          enable = lib.mkDefault true;
-          enableSSHSupport = lib.mkDefault true;
-        };
-=======
-
->>>>>>> ff3b185 (update)
-
         users.users.${username}.extraGroups = [ "networkmanager" ];
       }
 

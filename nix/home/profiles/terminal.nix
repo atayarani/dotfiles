@@ -30,6 +30,7 @@ in
     dotfiles.bat.enable = true;
     dotfiles.zoxide.enable = true;
     dotfiles.mcfly.enable = true;
+    dotfiles.navi.enable = true;
     dotfiles.oh-my-posh = {
       enable = true;
       theme = omp_theme.mocha;

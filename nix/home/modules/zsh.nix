@@ -8,6 +8,7 @@
 with lib;
 let
   cfg = config.dotfiles.zsh;
+  homeDir = config.home.homeDirectory;
 in
 {
   options.dotfiles.zsh = {
@@ -40,12 +41,12 @@ in
           }
           { name = "unixorn/fzf-zsh-plugin"; }
         ];
-        zplugHome = "/$HOME/.config/zplug";
+        zplugHome = "${homeDir}/.config/zplug";
       };
 
       envExtra = ''
         export PATH=$HOME/bin:/etc/profiles/per-user/$USER/bin:/run/current-system/sw/bin/:/usr/local/bin:$PATH
-        eval "$(fnm env --use-on-cd)"
+        # eval "$(fnm env --use-on-cd)"
         export COLORTERM=truecolor
         export TERM=xterm-256color
       '';

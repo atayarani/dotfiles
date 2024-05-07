@@ -1,0 +1,4 @@
+% nix
+
+# Build config for victus
+nixfmt nix && nix run '.#home' -- switch --flake '.#ali@victus' && source $HOME/.zshrc && source $HOME/.zshenv

@@ -1,6 +1,5 @@
 {
   imports = [
-    ./gnupg
     ./alacritty.nix
     ./aws.nix
     ./bat.nix
@@ -20,5 +19,6 @@
     ./ripgrep.nix
     ./zoxide.nix
     ./zsh.nix
+    ./navi.nix
   ];
 }

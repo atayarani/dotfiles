@@ -28,7 +28,5 @@ in
       ]
       ++ lib.optionals isLinux [ distrobox ]
       ++ lib.optionals isNixOS [ man-pages ];
-
-
   };
 }
