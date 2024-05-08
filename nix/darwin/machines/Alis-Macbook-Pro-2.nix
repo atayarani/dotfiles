@@ -11,6 +11,7 @@ in
     nixfmt-rfc-style
     nil
     fnm
+    sops
   ];
 
   dotfiles.profiles.work.enable = true;

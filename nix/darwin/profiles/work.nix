@@ -30,6 +30,7 @@
         "tmuxinator"
         "tpm"
         "xdg-ninja"
+        "granted"
       ];
       casks = [
         "alacritty"
@@ -40,7 +41,10 @@
         "orbstack"
       ];
       masApps = { };
-      taps = [ "homebrew/cask-fonts" ];
+      taps = [
+        "homebrew/cask-fonts"
+        "common-fate/granted"
+      ];
     };
   };
 }
