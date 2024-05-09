@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+
   ...
 }:
 with lib;
@@ -9,8 +9,8 @@ let
   cfg = config.dotfiles.zoxide;
 in
 {
-  options.dotfiles.zoxide.enable = lib.mkEnableOption "zoxide";
-  config = lib.mkIf cfg.enable {
+  options.dotfiles.zoxide.enable = mkEnableOption "zoxide";
+  config = mkIf cfg.enable {
     programs.zoxide = {
       enable = true;
       options = [

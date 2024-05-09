@@ -14,8 +14,10 @@ in
   config = lib.mkIf config.dotfiles.profiles.python.enable {
     programs.poetry = {
       enable = true;
-      settings = {
-        virtualenvs.inProject = true;
+      settings.virtualenvs = {
+        inProject = true;
+        options.no-pip = true;
+        options.no-setuptools = true;
       };
     };
   };

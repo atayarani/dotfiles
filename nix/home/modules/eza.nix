@@ -1,16 +1,11 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, ... }:
 with lib;
 let
   cfg = config.dotfiles.eza;
 in
 {
-  options.dotfiles.eza.enable = lib.mkEnableOption "eza";
-  config = lib.mkIf cfg.enable {
+  options.dotfiles.eza.enable = mkEnableOption "eza";
+  config = mkIf cfg.enable {
     programs.eza = {
       enable = true;
       git = true;

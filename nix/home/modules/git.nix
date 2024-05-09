@@ -1,31 +1,25 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-
+{ config, lib, ... }:
+with lib;
 let
   cfg = config.dotfiles.git;
   delta_themes = import ./delta/themes.nix;
 in
 {
   options.dotfiles.git = {
-    enable = lib.mkEnableOption "git";
-    userName = lib.mkOption {
-      type = lib.types.str;
+    enable = mkEnableOption "git";
+    userName = mkOption {
+      type = types.str;
       description = "The name to use for git commits";
     };
-    userEmail = lib.mkOption {
-      type = lib.types.str;
+    userEmail = mkOption {
+      type = types.str;
       description = "The email to use for git commits";
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     programs.git = {
       enable = cfg.enable;
-      package = pkgs.git;
 
       userName = cfg.userName;
       userEmail = cfg.userEmail;

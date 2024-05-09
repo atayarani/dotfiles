@@ -1,17 +1,9 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, ... }:
 with lib;
 let
   cfg = config.dotfiles.aws;
 in
 {
-  options.dotfiles.aws.enable = lib.mkEnableOption "aws";
-  config = lib.mkIf cfg.enable {
-    programs.awscli.enable = true;
-    # programs.granted.enable = true;
-  };
+  options.dotfiles.aws.enable = mkEnableOption "aws";
+  config = mkIf cfg.enable { programs.awscli.enable = true; };
 }

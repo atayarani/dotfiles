@@ -7,18 +7,18 @@
     ./emacs.nix
     ./eza.nix
     ./fd.nix
-    ./firefox.nix
     ./fzf.nix
     ./git.nix
     ./linkapps.nix
     ./manpages.nix
     ./mcfly.nix
+    ./navi.nix
     ./nix.nix
     ./oh-my-posh.nix
     ./pandoc.nix
     ./ripgrep.nix
     ./zoxide.nix
     ./zsh.nix
-    ./navi.nix
+    ./direnv.nix
   ];
 }

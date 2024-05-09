@@ -1,16 +1,11 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, ... }:
 with lib;
 let
   cfg = config.dotfiles.fzf;
 in
 {
-  options.dotfiles.fzf.enable = lib.mkEnableOption "fzf";
-  config = lib.mkIf cfg.enable {
+  options.dotfiles.fzf.enable = mkEnableOption "fzf";
+  config = mkIf cfg.enable {
     programs.fzf = {
       enable = true;
       colors = {
