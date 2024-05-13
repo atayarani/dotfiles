@@ -19,13 +19,10 @@ in
       defaults = {
         NSGlobalDomain = {
           # Locale
-          AppleLanguages = mkDefault [
-            "en"
-            "ja"
-          ];
-          AppleLocale = mkDefault "en_JP";
-          AppleMeasurementUnits = mkDefault "Centimeters";
-          AppleMetricUnits = mkDefault true;
+          AppleLanguages = mkDefault [ "en" ];
+          #AppleLocale = mkDefault "en_JP";
+          #AppleMeasurementUnits = mkDefault "Centimeters";
+          #AppleMetricUnits = mkDefault true;
           # Tame auto-correct
           NSAutomaticCapitalizationEnabled = mkDefault false;
           NSAutomaticDashSubstitutionEnabled = mkDefault false;

@@ -33,12 +33,12 @@
         "granted"
       ];
       casks = [
-        "alacritty"
-        "alfred"
         "font-jetbrains-mono-nerd-font"
         "iterm2"
         "tailscale"
         "orbstack"
+        "raycast"
+        "1password-cli"
       ];
       masApps = { };
       taps = [
