@@ -1,0 +1,5 @@
+{{ template "common/zshrc_xdg.tmpl" . }}
+
+export HOMEBREW_BUNDLE_FILE=$XDG_CONFIG_HOME/brewfile/Brewfile
+
+{{ template "common/zshrc_zplug.tmpl" . }}

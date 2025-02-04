@@ -1,0 +1,4 @@
+{{- $class := promptStringOnce . "class" "System Class" -}}
+
+[data]
+class = {{ $class | quote }}
