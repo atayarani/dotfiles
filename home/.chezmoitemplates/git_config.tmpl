@@ -1,3 +1,4 @@
+{{- $gitClass := index $.gitConfig $.class -}}
 [fetch]
 prune = true
 pruneTags = true
@@ -26,7 +27,6 @@ diffFilter = delta --color-only
 
 [delta]
 navigate = true  # use n and N to move between diff sections
-dark = true      # or light = true, or omit for auto-detection
 
 [merge]
 conflictstyle = zdiff3
@@ -34,9 +34,6 @@ conflictstyle = zdiff3
 [alias]
 track = "!f() { git branch --set-upstream-to=origin/\"$1\" \"$1\"; }; f"
 
-{{ printf "\n" -}}
-{{- if eq .class "work" -}}
-    {{- template "work/git_config.tmpl" . -}}
-{{- else if eq .class "personal" -}}
-    {{- template "personal/git_config.tmpl" . -}}
-{{- end -}}
+[user]
+name = {{ $gitClass.user }}
+email = {{ $gitClass.email }}

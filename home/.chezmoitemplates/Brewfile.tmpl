@@ -1,0 +1,24 @@
+{{/*
+		For each type (brew, cask, tap):
+		1) Merge the values
+		2) Create a new alpha-sorted list
+		2) Print the sorted list with the corresponding Brewfile key prefix
+	*/}}
+{{- $classBrew := index $.Brewfile $.class -}}
+{{- range $key := list "brews" "casks" "taps" }}
+  {{- $commonType := index $.Brewfile.common $key }}
+  {{- $classType := index $classBrew $key }}
+  {{- $keyword := trimSuffix "s" $key }}
+  {{- $merged := $commonType }}
+  {{- range $item := $classType }}
+    {{- $merged = append $merged $item }}
+  {{- end }}
+
+  {{- $sorted := sortAlpha $merged }}
+
+    {{- range $sorted }}
+            {{- $keyword }} {{ . | quote }}
+            {{- print "\n" -}}
+    {{- end }}
+{{- print "\n" -}}
+{{- end }}

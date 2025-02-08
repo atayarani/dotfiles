@@ -1,13 +1,12 @@
+{{ $pluginClass := index $.zplug $.class }}
 ### Begin zplug ###
 source $HOME/.zplug/init.zsh
 
 zplug "plugins/git", from:oh-my-zsh
 {{- printf "\n" -}}
-{{- if eq .class "work" -}}
-    {{- template "work/zshrc_zplug.tmpl" . -}}
-{{- else if eq .class "personal" -}}
-    {{- template "personal/zshrc_zplug.tmpl" . -}}
-{{- end -}}
+{{ range $pluginClass }}
+zplug {{ . | quote }}
+{{ end }}
 {{ printf "\n" -}}
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
