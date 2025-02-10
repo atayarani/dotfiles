@@ -1,7 +1,7 @@
 zplug:
   common:
-    - '"plugins/git", from:oh-my-zsh'
+    - 'plugins/git, from:oh-my-zsh'
   personal: []
   work:
-    - '"plugins/aws", from:oh-my-zsh'
-    - '"mattberther/zsh-pyenv"'
+    - 'plugins/aws, from:oh-my-zsh'
+    - "mattberther/zsh-pyenv"
