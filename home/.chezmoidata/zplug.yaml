@@ -4,3 +4,4 @@ zplug:
   personal: []
   work:
     - '"plugins/aws", from:oh-my-zsh'
+    - '"mattberther/zsh-pyenv"'
