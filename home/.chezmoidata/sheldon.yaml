@@ -1,0 +1,10 @@
+---
+sheldon:
+  common:
+    remote:
+      fzf: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/fzf/fzf.plugin.zsh"
+      git: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh"
+  work:
+    remote:
+      pyenv: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/pyenv/pyenv.plugin.zsh"
+      aws: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/aws/aws.plugin.zsh"

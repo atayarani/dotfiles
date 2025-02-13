@@ -1,0 +1,18 @@
+shell = "zsh"
+apply = ["source"]
+
+{{ $commonPlugin:= index $.sheldon "common" -}}
+{{- range $key,$value := $commonPlugin }}
+    {{ range $pluginKey,$pluginValue := $value}}
+        [plugins.{{- $pluginKey -}}]
+        {{ $key }} = {{ $pluginValue | quote }}
+    {{ end }}
+{{- end }}
+
+{{- $classPlugin:= index $.sheldon $.class -}}
+{{- range $key,$value := $classPlugin }}
+    {{ range $pluginKey,$pluginValue := $value}}
+        [plugins.{{- $pluginKey -}}]
+        {{ $key }} = {{ $pluginValue | quote }}
+    {{ end }}
+{{- end -}}
