@@ -77,8 +77,10 @@ Brewfile:
       - "trivy"
       - "yq"
       - "zizmor"
+      - "gettext"
+      - "libunistring"
     casks:
-      - "flashspace"
+      - "aerospace"
       - "visual-studio-code"
       - "session-manager-plugin"
     taps:
@@ -86,3 +88,5 @@ Brewfile:
       - "felixkratz/formulae"
       - "homebrew/bundle"
       - "mszostok/tap"
+      - "homebrew/services"
+      - "nikitabobko/tap"
