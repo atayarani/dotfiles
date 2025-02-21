@@ -23,4 +23,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init - zsh)"
 {{ end }}
 
+export _ZO_DATA_DIR=$XDG_DATA_HOME
+
+eval "$(zoxide init zsh)"
 eval "$(sheldon source)"
