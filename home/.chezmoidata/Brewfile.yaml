@@ -15,6 +15,8 @@ Brewfile:
       - "python3"  # Interpreted, interactive, object-oriented programming language
       - "xdg-ninja"  # Check your $HOME for unwanted files and directories
       - "yamllint"  # Linter for YAML files
+      - "eza"
+      - "zoxide"
     casks:
       - "1password"  # Password manager that keeps all passwords secure behind one password
       - "1password-cli"  # Command-line interface for 1Password
@@ -24,7 +26,7 @@ Brewfile:
       - "iterm2"
       - "jetbrains-toolbox"  # JetBrains tools manager
       - "keymapp"  # ZSA keyboard firmware flasher
-      - "kitty"
+      - "kitty"  # GPU-based terminal emulator
       - "orbstack"  # Replacement for Docker Desktop
       - "proton-pass"  # Desktop client for Proton Pass
       - "raspberry-pi-imager"  # Imaging utility to install operating systems to a microSD card
