@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+function clonetree {
+    git_host=$(echo $1 | awk -F'[:@]' '{print $2}')
+    git_org=$(echo $1 | awk -F'[:/]' '{print $2}')
+    git_repo=$(echo $1 | awk -F'[/.]' '{print $3}')
+    code_dir="${HOME}/code/${git_host}/${git_org}/${git_repo}"
+    mkdir -p ${code_dir}
+    cd ${code_dir}
+    git clone $1 main
+    cd -
+}

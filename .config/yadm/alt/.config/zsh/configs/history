@@ -1,0 +1,18 @@
+### Configure History ###
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000 #How many lines of history to keep in memory
+export HISTTIMEFORMAT="[%F %T] "
+
+export HISTFILE="$XDG_STATE_HOME"/zsh/history #Where to save history to disk
+export SAVEHIST=5000               #Number of history entries to save to disk
+export HISTDUP=erase               #Erase duplicates in the history file
+setopt SHARE_HISTORY      #Share history across terminals
+setopt EXTENDED_HISTORY
+setopt HIST_NO_STORE
+
+setopt HIST_EXPIRE_DUPS_FIRST # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt HIST_IGNORE_ALL_DUPS       # ignore duplicated commands history list
+setopt HIST_IGNORE_SPACE      # ignore commands that start with space
+setopt HIST_VERIFY            # show command with history expansion to user before running it
+setopt HIST_FIND_NO_DUPS # Do not find duplicate command when searching
+### End History ###

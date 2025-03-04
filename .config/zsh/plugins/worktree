@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#;
+# Creates work tree off specified branch
+# @param BRANCHNAME: Git branch to work on
+# @return void
+#"
+function worktree() {
+  BASEDIR=$PWD
+  BRANCHNAME=$1
+  cd $BASEDIR/main;
+
+  # Ensure we don't have stale trees around...
+  git worktree prune;
+
+  # Get fresh data from origin...
+  git fetch origin;
+
+  # Check for the presense of a local branch...
+  git rev-parse --verify $BRANCHNAME
+
+  # $? == 0 means local branch with <branch-name> exists.
+  if [[ $? == 0 ]]; then
+    # Create a worktree from the local branch.  If it already exists
+    # in another worktree, then this will die with error.
+    git worktree add $BASEDIR/$BRANCHNAME $BRANCHNAME;
+  else
+    # Create a local branch with the same name as origin, then create
+    # a worktree from it.
+    git worktree add -b $BRANCHNAME $BASEDIR/$BRANCHNAME master;
+  fi
+  cd $BASEDIR/$BRANCHNAME;
+}

@@ -1,0 +1,5 @@
+{% if yadm.class == "Work" %}
+alias assume=". assume"
+{% else %}
+# This space intentionally left blank
+{% endif %}

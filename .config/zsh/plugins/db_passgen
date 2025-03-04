@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+function db_passgen() {
+  CHAR_COUNT=$1
+  openssl rand -hex 32 | base64 | cut -c1-$((CHAR_COUNT-1))
+}

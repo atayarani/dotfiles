@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+readonly SYSTEM_TYPE=$(uname -s)
+readonly BREW_DRY_RUN=true
+readonly KARABINER_DIR="${XDG_CONFIG_HOME}/karabiner"
+readonly KARABINER_INPUT_FILE="${KARABINER_DIR}/konfig.json"
+readonly KARABINER_OUTPUT_FILE="${KARABINER_DIR}/karabiner.json"
+
+is_darwin() { [ "$SYSTEM_TYPE" = "Darwin" ]; }
+
+update_karabiner() {
+    echo "Updating karabiner-elements..."
+    if [[ ! -d "${KARABINER_DIR}" ]]; then
+        echo "Creating ${KARABINER_DIR}"
+        mkdir -p "${KARABINER_DIR}"
+    fi
+    if [[ ! -f "${KARABINER_INPUT_FILE}" ]]; then
+        echo "Creating ${KARABINER_INPUT_FILE}"
+        touch "${KARABINER_INPUT_FILE}"
+    fi
+    if [[ ! -f "${KARABINER_OUTPUT_FILE}" ]]; then
+        echo "Creating ${KARABINER_OUTPUT_FILE}"
+        touch "${KARABINER_OUTPUT_FILE}"
+    fi
+
+    npx karabiner-human-config -i "${KARABINER_INPUT_FILE}" -o "${KARABINER_OUTPUT_FILE}"
+    echo "...karabiner-elements updated"
+}
+
+brew_bundle() {
+    brew bundle
+    echo "=========================="
+    if [ "${BREW_DRY_RUN}" == true ]; then
+        brew bundle cleanup
+    else
+        brew bundle cleanup --force
+    fi
+}
+
+rebuild_bat_cache() {
+    bat cache --build
+}
+
+if is_darwin; then
+    # brew_bundle
+    update_karabiner
+fi
+
+rebuild_bat_cache

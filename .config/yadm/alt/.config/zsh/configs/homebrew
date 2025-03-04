@@ -1,0 +1,4 @@
+### Configure Homebrew ###
+export HOMEBREW_BUNDLE_FILE=${XDG_CONFIG_HOME}/brewfile/Brewfile ### Set Brewfile
+export PATH=/opt/homebrew/bin:$PATH
+### End Homebrew ###

@@ -1,0 +1,4 @@
+### Configure zoxide ###
+export _ZO_DATA_DIR=${XDG_DATA_HOME}
+export ZOXIDE_CMD_OVERRIDE=cd
+### End zoxide ###

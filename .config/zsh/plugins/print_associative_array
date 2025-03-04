@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+assoc_array=$@
+
+for key val in "${(@kv)assoc_array}"; do
+    echo "$key -> $val"
+done

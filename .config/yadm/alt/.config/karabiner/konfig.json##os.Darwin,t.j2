@@ -1,0 +1,12 @@
+{
+    "caps | any": { "t": "hyper" },
+    "hyper": {
+        "_self": "hyper",
+        "b": "$ open -a Arc", // Browser
+        {% if YADM_CLASS == "Work" %}
+        "s": "$ open -a Slack",
+        {% endif %}
+        "t": "$ open -a kitty", // Terminal
+        "v": "$ open -a Visual Studio Code" // Code Editor
+    }
+}
