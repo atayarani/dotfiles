@@ -1,0 +1,14 @@
+shell = "zsh"
+apply = ["source"]
+
+[plugins.starship]
+github = "axieax/zsh-starship"
+
+[plugins.fzf]
+remote = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/fzf/fzf.plugin.zsh"
+
+[plugins.git]
+remote = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh"
+
+[plugins.pyenv]
+remote = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/pyenv/pyenv.plugin.zsh"

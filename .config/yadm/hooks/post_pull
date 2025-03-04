@@ -1,7 +1,27 @@
 #!/usr/bin/env bash
 
+readonly SYSTEM_TYPE=$(uname -s)
+readonly BREW_DRY_RUN=true
+
+is_darwin() { [ "$SYSTEM_TYPE" = "Darwin" ]; }
+
 update_karabiner() {
+    echo -n "Updating karabiner-elements..."
     npx karabiner-human-config -i ~/.config/karabiner/konfig.json -o ~/.config/karabiner/karabiner.json
+    echo "...karabiner-elements updated"
 }
 
-update_karabiner
+brew_bundle() {
+    brew bundle
+    echo "=========================="
+    if [ "${BREW_DRY_RUN}" == true ]; then
+        brew bundle cleanup
+    else
+        brew bundle cleanup --force
+    fi
+}
+
+if is_darwin; then
+    update_karabiner
+    # brew_bundle
+fi
