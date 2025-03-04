@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+npx karabiner-human-config -i ~/.config/karabiner/konfig.json -o ~/.config/karabiner/karabiner.json
