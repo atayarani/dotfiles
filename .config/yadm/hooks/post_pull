@@ -21,7 +21,13 @@ brew_bundle() {
     fi
 }
 
+rebuild_bat_cache() {
+    bat cache --build
+}
+
 if is_darwin; then
     update_karabiner
     brew_bundle
 fi
+
+rebuild_bat_cache
