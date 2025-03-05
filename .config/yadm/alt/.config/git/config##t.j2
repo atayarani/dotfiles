@@ -4,6 +4,9 @@
 {%- set git_email = "117208915+ChewAli@users.noreply.github.com" -%}
 {%- endif -%}
 
+[include]
+path = $HOME/.config/delta/themes/catppuccin.gitconfig
+
 [fetch]
 prune = true
 pruneTags = true
@@ -32,6 +35,7 @@ diffFilter = delta --color-only
 
 [delta]
 navigate = true  # use n and N to move between diff sections
+features = catppuccin-mocha
 
 [merge]
 conflictstyle = zdiff3
