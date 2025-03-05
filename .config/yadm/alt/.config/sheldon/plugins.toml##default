@@ -4,6 +4,9 @@ apply = ["source"]
 [plugins.starship]
 github = "axieax/zsh-starship"
 
+[plugins.bat]
+github = "fdellwing/zsh-bat"
+
 [plugins.fzf]
 remote = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/fzf/fzf.plugin.zsh"
 
