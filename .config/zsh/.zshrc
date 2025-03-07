@@ -9,6 +9,7 @@ export HOMEBREW_BUNDLE_FILE=$XDG_CONFIG_HOME/brewfile/Brewfile
 
 source $ZDOTDIR/fzf
 export PATH=/opt/homebrew/bin:$PATH
+export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '/Users/ali/.config/zsh/.zshrc'
@@ -23,5 +24,4 @@ eval "$(pyenv init - zsh)"
 
 export _ZO_DATA_DIR=$XDG_DATA_HOME
 
-eval "$(zoxide init zsh)"
 eval "$(sheldon source)"
