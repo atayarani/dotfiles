@@ -1,0 +1,15 @@
+export XDG_CONFIG_HOME=/Users/ali/.config
+export XDG_CACHE_HOME=/Users/ali/.cache
+export XDG_DATA_HOME=/Users/ali/.local/share
+export XDG_RUNTIME_DIR=/run/user/$UID
+export XDG_STATE_HOME=/Users/ali/.local/state
+export XDG_DATA_DIRS=/usr/local/share/:/usr/share/
+export XDG_CONFIG_DIRS=/etc/xdg
+export XDG_DESKTOP_DIR="/Users/ali/Desktop"
+export XDG_DOCUMENTS_DIR="/Users/ali/Documents"
+export XDG_DOWNLOAD_DIR="/Users/ali/Downloads"
+export XDG_MUSIC_DIR="/Users/ali/Music"
+export XDG_PICTURES_DIR="/Users/ali/Pictures"
+export XDG_PUBLICSHARE_DIR="/Users/ali/Public"
+export XDG_TEMPLATES_DIR="/Users/ali/Templates"
+export XDG_VIDEOS_DIR="/Users/ali/Videos"
