@@ -1,3 +1,4 @@
+### Set XDG Paths ###
 export XDG_CONFIG_HOME=/Users/ali/.config
 export XDG_CACHE_HOME=/Users/ali/.cache
 export XDG_DATA_HOME=/Users/ali/.local/share
@@ -13,3 +14,4 @@ export XDG_PICTURES_DIR="/Users/ali/Pictures"
 export XDG_PUBLICSHARE_DIR="/Users/ali/Public"
 export XDG_TEMPLATES_DIR="/Users/ali/Templates"
 export XDG_VIDEOS_DIR="/Users/ali/Videos"
+### End XDG ###

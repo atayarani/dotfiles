@@ -1,0 +1,2 @@
+export SHELDON_PROFILE=Personal
+eval "$(sheldon source)"

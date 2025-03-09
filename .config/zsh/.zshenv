@@ -1,1 +1,1 @@
-../yadm/alt/.config/zsh/.zshenv##class.Work
+../yadm/alt/.config/zsh/.zshenv##default
