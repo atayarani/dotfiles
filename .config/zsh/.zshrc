@@ -1,27 +1,18 @@
-### Set XDG Paths
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_STATE_HOME=$HOME/.local/state
+export ADDITIONAL_ZSH_CONFIGS="${ZDOTDIR}/configs"
+source ${ADDITIONAL_ZSH_CONFIGS}/xdg ### Set XDG Paths
+source ${ADDITIONAL_ZSH_CONFIGS}/fzf ### Configure fzf
 
-### Set Brewfile
-export HOMEBREW_BUNDLE_FILE=$XDG_CONFIG_HOME/brewfile/Brewfile
 
-source $ZDOTDIR/fzf
-export PATH=/opt/homebrew/bin:$PATH
+source ${ADDITIONAL_ZSH_CONFIGS}/homebrew ### Configure Homebrew
+
+
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
 
-# The following lines were added by compinstall
-zstyle :compinstall filename '/Users/ali/.config/zsh/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+source ${ADDITIONAL_ZSH_CONFIGS}/compinstall ### Configure zsh completion
+source ${ADDITIONAL_ZSH_CONFIGS}/pyenv ### Configure pyenv
 
 export _ZO_DATA_DIR=$XDG_DATA_HOME
+eval "$(zoxide init zsh)"
 
+export SHELDON_PROFILE=Work
 eval "$(sheldon source)"
