@@ -1,1 +1,2 @@
-../../yadm/alt/.config/zsh/configs/sheldon##default
+export SHELDON_PROFILE=Work
+eval "$(sheldon source)"

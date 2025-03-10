@@ -37,6 +37,12 @@ conflictstyle = zdiff3
 [alias]
 track = "!f() { git branch --set-upstream-to=origin/\"$1\" \"$1\"; }; f"
 
+{% if yadm.class == "Work" %}
 [user]
 name = Ali Tayarani
 email = 117208915+ChewAli@users.noreply.github.com
+{% else %}
+[user]
+name = Ali Tayarani
+email = 619512+atayarani@users.noreply.github.com
+{% endif %}
