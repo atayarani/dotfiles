@@ -1,0 +1,25 @@
+{
+  "pingIntervalSeconds" : 5,
+  "pingSlowThresholdMilliseconds" : 300,
+  "shellCommandOnStatusChange" : "",
+  "pingTimeoutSeconds" : 1,
+  "fadeSeconds" : {
+    "connected" : 5,
+    "disconnected" : 0,
+    "slow" : 10
+  },
+  "launchAtLogin" : true,
+  "screen" : "all",
+  "sounds" : {
+    "connected" : "",
+    "slow" : "",
+    "disconnected" : "",
+    "volume" : 0.7
+  },
+  "colors" : {
+    "slow" : "systemYellow",
+    "connected" : "systemGreen",
+    "disconnected" : "systemRed"
+  },
+  "pingIP" : "1.1.1.1"
+}
