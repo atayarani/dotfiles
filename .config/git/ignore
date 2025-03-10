@@ -1,42 +1,57 @@
 cdk.context.json
 nohup.out
 
+# macOS system files
 .DS_Store
-before-nix
-Zotero
-Music
-Movies
-Downloads
-Documents
-Databases
-Library
-Applications
-.rustup
-.config/zsh/.zshrc
-*.before-nix*
+
+# Personal and common directories (assumed to be at the repo root)
+Applications/
+Databases/
+Desktop/
+Documents/
+Downloads/
+Library/
+Movies/
+Music/
+Pictures/
+Public/
+Zotero/
+
+# Environment and configuration directories
+.cache/
+.config/karabiner/
+.config/raycast/
 .config/zsh/.zprofile
 .config/zsh/.zshenv
-code/github.com/**/*
-iCloud*/**/*
-.pyenv
-.npm
-.local
-.kube/cache
+.config/zsh/.zshrc
+.docker/contexts/
+.kube/cache/
+.local/
+.npm/
+.pyenv/
+.rustup/
+
+# Project-specific patterns
+before-nix
+*.before-nix*
+
+# Code directories (ignore entire subtree)
+code/github.com/
+
+# iCloud folders (any folder starting with iCloud)
+iCloud*/
+
+# SSH: ignore everything in .ssh except the config files
 .ssh/*
 !.ssh/config
 !.ssh/config.d
-.config/raycast
-.config/karabiner
-.cache
+
+# Miscellaneous files
 *.mdb
-.docker/contexts
 .zcompdump
 .zsh_history
-.zsh_sessions/*
-**/.zsh_sessions/*
-Desktop
-Public
-Pictures
+.zsh_sessions/
+
 
 
 #temp
