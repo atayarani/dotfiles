@@ -1,0 +1,11 @@
+{
+    "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontLigatures.enabled": true,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modificationsIfAvailable",
+    "editor.formatOnType": true,
+    "catppuccin.workbenchMode": "default"
+}
