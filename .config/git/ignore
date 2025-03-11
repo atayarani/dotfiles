@@ -19,6 +19,7 @@ Zotero/
 
 # Environment and configuration directories
 .cache/
+.config/git/config
 .config/karabiner/
 .config/raycast/
 .config/zsh/.zprofile
