@@ -3,6 +3,7 @@ brew "detect-secrets"
 brew "gitleaks"
 
 cask "balenaetcher"
+cask "calibre"
 cask "creality-print"
 cask "discord"
 cask "itch"
@@ -13,7 +14,6 @@ cask "sonos"
 cask "steam"
 cask "transmission"
 cask "zen-browser"
-cask "calibre"
 
 mas "LanScan", id: 472_226_235
 #### END {{ yadm.class }} ####

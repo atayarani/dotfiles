@@ -1,2 +1,2 @@
-export SHELDON_PROFILE=Work
+export SHELDON_PROFILE=Personal
 eval "$(sheldon source)"
