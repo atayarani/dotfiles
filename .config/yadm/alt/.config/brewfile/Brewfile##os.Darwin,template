@@ -35,6 +35,7 @@ cask "1password-cli" # Command-line interface for 1Password
 cask "1password" # Password manager that keeps all passwords secure behind one password
 cask "aerospace"
 cask "arc" # Chromium based browser
+cask "capacities" # App to write and organise your ideas
 cask "font-jetbrains-mono-nerd-font" # JetBrainsMono Nerd Font families (JetBrains Mono)
 cask "istherenet" # Your internet connection status at a glance
 cask "jetbrains-toolbox" # JetBrains tools manager
@@ -55,7 +56,9 @@ cask "zed"
 
 mas "Amphetamine", id: 937_984_704
 
+vscode "catppuccin.catppuccin-vsc-icons"
 vscode "catppuccin.catppuccin-vsc-pack"
+vscode "catppuccin.catppuccin-vsc"
 vscode "tamasfe.even-better-toml"
 vscode "wholroyd.jinja"
 

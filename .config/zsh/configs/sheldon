@@ -1,2 +1,1 @@
-export SHELDON_PROFILE=Personal
-eval "$(sheldon source)"
+../../yadm/alt/.config/zsh/configs/sheldon##default
