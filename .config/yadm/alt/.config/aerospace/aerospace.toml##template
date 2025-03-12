@@ -78,7 +78,8 @@ outer.right = 0
 # 'main' binding mode must be always presented
 # Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
-
+cmd-ctrl-alt-equal = 'balance-sizes'
+cmd-ctrl-alt-shift-equal = 'fullscreen'
 # All possible keys:
 # - Letters.        a, b, c, ..., z
 # - Numbers.        0, 1, 2, ..., 9
@@ -125,13 +126,13 @@ alt-shift-equal = 'resize smart +50'
 
 
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-alt-tab = 'workspace-back-and-forth'
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+alt-tab = 'workspace --wrap-around next'
+alt-shift-tab = 'workspace --wrap-around prev'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+cmd-ctrl-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-shift-semicolon = 'mode service'
+
 
 #### Custom workspaces ####
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
@@ -145,6 +146,9 @@ alt-shift-b = 'move-node-to-workspace Browser'
 alt-i = 'workspace IDE'
 alt-shift-i = 'move-node-to-workspace IDE'
 
+alt-n = 'workspace Notes'
+alt-shift-n = 'move-node-to-workspace Notes'
+
 alt-t = 'workspace Terminal'
 alt-shift-t = 'move-node-to-workspace Terminal'
 
@@ -157,6 +161,9 @@ alt-shift-s = 'move-node-to-workspace Slack'
 alt-f = 'workspace Files'
 alt-shift-f = 'move-node-to-workspace Files'
 {% endif %}
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#mode
+cmd-ctrl-alt-shift-semicolon = 'mode service'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -197,6 +204,14 @@ run = ['move-node-to-workspace IDE']
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.intellij'
 run = ['move-node-to-workspace IDE']
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = ['move-node-to-workspace Notes']
+
+[[on-window-detected]]
+if.app-id = 'io.capacities.app'
+run = ['move-node-to-workspace Notes']
 
 {% if yadm.class == "Work" %}
 [[on-window-detected]]
