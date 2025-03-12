@@ -123,19 +123,7 @@ alt-shift-l = 'move right'
 alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-1 = 'workspace 1'
-alt-b = 'workspace Browser'
-alt-i = 'workspace IDE'
-alt-s = 'workspace Slack'
-alt-t = 'workspace Terminal'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-b = 'move-node-to-workspace Browser'
-alt-shift-i = 'move-node-to-workspace IDE'
-alt-shift-s = 'move-node-to-workspace Slack'
-alt-shift-t = 'move-node-to-workspace Terminal'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -144,6 +132,31 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = 'mode service'
+
+#### Custom workspaces ####
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+alt-1 = 'workspace 1'
+alt-shift-1 = 'move-node-to-workspace 1'
+
+alt-b = 'workspace Browser'
+alt-shift-b = 'move-node-to-workspace Browser'
+
+alt-i = 'workspace IDE'
+alt-shift-i = 'move-node-to-workspace IDE'
+
+alt-t = 'workspace Terminal'
+alt-shift-t = 'move-node-to-workspace Terminal'
+
+{% if yadm.class == "Work" %}
+alt-s = 'workspace Slack'
+alt-shift-s = 'move-node-to-workspace Slack'
+{% endif %}
+
+{% if yadm.class == "Personal" %}
+alt-f = 'workspace Files'
+alt-shift-f = 'move-node-to-workspace Files'
+{% endif %}
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -168,6 +181,7 @@ down = 'volume down'
 up = 'volume up'
 shift-down = ['volume set 0', 'mode main']
 
+
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
 run = ['move-node-to-workspace Browser']
@@ -177,8 +191,36 @@ if.app-id = 'com.microsoft.VSCode'
 run = ['move-node-to-workspace IDE']
 
 [[on-window-detected]]
+if.app-id = 'dev.zed.Zed'
+run = ['move-node-to-workspace IDE']
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.intellij'
+run = ['move-node-to-workspace IDE']
+
+{% if yadm.class == "Work" %}
+[[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = ['move-node-to-workspace Slack']
+{% endif %}
+
+{% if yadm.class == "Personal" %}
+[[on-window-detected]]
+if.app-id = 'org.m0k.transmission'
+run = ['move-node-to-workspace Files']
+
+[[on-window-detected]]
+if.app-id = 'com.binarynights.forklift-setapp'
+run = ['move-node-to-workspace Files']
+{% endif %}
+
+
+
+
+
+
+
+
 
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
