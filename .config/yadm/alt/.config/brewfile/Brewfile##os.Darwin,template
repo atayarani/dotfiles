@@ -59,6 +59,8 @@ mas "Amphetamine", id: 937_984_704
 vscode "catppuccin.catppuccin-vsc-icons"
 vscode "catppuccin.catppuccin-vsc-pack"
 vscode "catppuccin.catppuccin-vsc"
+vscode "github.copilot-chat"
+vscode "github.copilot"
 vscode "tamasfe.even-better-toml"
 vscode "wholroyd.jinja"
 
