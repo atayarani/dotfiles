@@ -53,6 +53,7 @@ reload_aerospace() {
 if is_darwin; then
     brew_bundle
     update_karabiner
+    reload_aerospace
     theme_forklift
 fi
 
