@@ -3,3 +3,6 @@ brew "black"
 brew "pyenv-virtualenv" # Pyenv plugin to manage virtualenv
 brew "pyenv" # Python version management
 brew "python3" # Interpreted, interactive, object-oriented programming language
+
+vscode "ms-python.python"
+vscode "ms-python.black-formatter"
