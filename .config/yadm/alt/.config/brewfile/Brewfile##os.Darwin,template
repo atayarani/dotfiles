@@ -4,6 +4,7 @@
 ##### COMMON PACKAGES ####
 tap "felixkratz/formulae"
 tap "nikitabobko/tap"
+tap "buo/cask-upgrade"
 
 brew "ansible-lint" # Checks ansible playbooks for practices and behaviour
 brew "ansible" # Automate deployment, configuration, and upgrading
