@@ -1,0 +1,2 @@
+brew "ansible-lint" # Checks ansible playbooks for practices and behaviour
+brew "ansible" # Automate deployment, configuration, and upgrading

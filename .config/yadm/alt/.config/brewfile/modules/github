@@ -1,0 +1,4 @@
+brew "gh"
+brew "action-docs" # Generate docs for GitHub actions
+brew "codeowners-validator"
+brew "zizmor" # Find security issues in GitHub Actions setups

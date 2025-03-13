@@ -6,64 +6,35 @@ tap "felixkratz/formulae"
 tap "nikitabobko/tap"
 tap "buo/cask-upgrade"
 
-brew "ansible-lint" # Checks ansible playbooks for practices and behaviour
-brew "ansible" # Automate deployment, configuration, and upgrading
-brew "bat" # Clone of cat(1) with syntax highlighting and Git integration
+{% include "modules/ansible" %}
+{% include "modules/shell" %}
+{% include "modules/python" %}
+{% include "modules/notes" %}
+{% include "modules/passwords" %}
+{% include "modules/yubikey" %}
+
 brew "borders" # Jankyborders – A window border system for macOS
-brew "coreutils" # GNU File, Shell, and Text utilities
-brew "eza" # Modern, maintained replacement for ls
-brew "fzf" # Command-line fuzzy finder written in Go
-brew "git-delta" # Syntax-highlighting pager for git and diff output
-brew "gnu-sed" # GNU implementation of the famous stream editor
-brew "grep" # GNU grep, egrep and fgrep
 brew "just" # Handy way to save and run project-specific commands
 brew "mas" # Mac App Store command-line interface
-brew "node" # Platform built on V8 to build network applications
-brew "pre-commit" # Framework for managing multi-language pre-commit hooks
-brew "pyenv-virtualenv" # Pyenv plugin to manage virtualenv
-brew "pyenv" # Python version management
-brew "python3" # Interpreted, interactive, object-oriented programming language
-brew "sheldon" # Fast, configurable, shell plugin manager
 brew "sketchybar" # Custom macOS statusbar with shell plugin, interaction and graph support
-brew "starship" # Cross-shell prompt for astronauts
-brew "tmux" # Terminal multiplexer
-brew "xdg-ninja" # Check your $HOME for unwanted files and directories
 brew "yadm" # Manage your dotfiles across multiple diverse machines, securely
-brew "yamllint" # Linter for YAML files
-brew "zoxide" # Shell extension to navigate your filesystem faster
 
-cask "1password-cli" # Command-line interface for 1Password
-cask "1password" # Password manager that keeps all passwords secure behind one password
 cask "aerospace"
 cask "arc" # Chromium based browser
-cask "capacities" # App to write and organise your ideas
 cask "font-jetbrains-mono-nerd-font" # JetBrainsMono Nerd Font families (JetBrains Mono)
 cask "istherenet" # Your internet connection status at a glance
 cask "jetbrains-toolbox" # JetBrains tools manager
 cask "jordanbaird-ice"
 cask "karabiner-elements"
 cask "keymapp" # ZSA keyboard firmware flasher
-cask "kitty" # GPU-based terminal emulator
-cask "obsidian"
 cask "orbstack" # Replacement for Docker Desktop
-cask "proton-pass" # Desktop client for Proton Pass
 cask "raspberry-pi-imager" # Imaging utility to install operating systems to a microSD card
 cask "raycast" # Control your tools with a few keystrokes
 cask "setapp" # Collection of apps available by subscription
 cask "tailscale" # Mesh VPN based on WireGuard
-cask "visual-studio-code"
-cask "yubico-authenticator" # Application for generating TOTP and HOTP codes
-cask "zed"
+
 
 mas "Amphetamine", id: 937_984_704
-
-vscode "catppuccin.catppuccin-vsc-icons"
-vscode "catppuccin.catppuccin-vsc-pack"
-vscode "catppuccin.catppuccin-vsc"
-vscode "github.copilot-chat"
-vscode "github.copilot"
-vscode "tamasfe.even-better-toml"
-vscode "wholroyd.jinja"
 
 #### END COMMON ####
 

@@ -1,0 +1,6 @@
+{% include "modules/development" %}
+tap "common-fate/granted"
+brew "aws-cdk"
+brew "aws-sso-util"
+brew "awscli"
+brew "granted"

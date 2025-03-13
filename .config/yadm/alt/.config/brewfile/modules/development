@@ -1,0 +1,20 @@
+brew "git-delta" # Syntax-highlighting pager for git and diff output
+brew "git" # Use homebrew's version of Git for newer version
+brew "jq" # Lightweight and flexible command-line JSON processor
+brew "node" # needed for npx and node-based packages
+brew "pre-commit" # Framework for managing multi-language pre-commit hooks
+brew "shellcheck" # Static analysis and linting tool for shell scripts
+brew "yamllint" # Linter for YAML files
+brew "yq" # Command-line YAML processor
+
+cask "kitty" # GPU-based terminal emulator
+cask "visual-studio-code" # Open-source code editor
+cask "zed" # Multiplayer code editor
+
+vscode "catppuccin.catppuccin-vsc-icons"
+vscode "catppuccin.catppuccin-vsc-pack"
+vscode "catppuccin.catppuccin-vsc"
+vscode "github.copilot-chat"
+vscode "github.copilot"
+vscode "tamasfe.even-better-toml"
+vscode "wholroyd.jinja"

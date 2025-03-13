@@ -1,0 +1,14 @@
+brew "bat" # Clone of cat(1) with syntax highlighting and Git integration
+brew "coreutils" # GNU File, Shell, and Text utilities
+brew "eza" # Modern, maintained replacement for ls
+brew "fzf" # Command-line fuzzy finder written in Go
+brew "gnu-sed" # GNU implementation of the famous stream editor
+brew "grep" # GNU grep, egrep and fgrep
+brew "sheldon" # Fast, configurable, shell plugin manager
+brew "starship" # Cross-shell prompt for astronauts
+brew "tmux" # Terminal multiplexer
+brew "xdg-ninja" # Check your $HOME for unwanted files and directories
+brew "zoxide" # Shell extension to navigate your filesystem 
+brew "tmuxinator" # Manage complex tmux sessions easily
+brew "tpm" # Plugin manager for tmux
+brew "tree" # Display directories as trees (with optional color/HTML output)

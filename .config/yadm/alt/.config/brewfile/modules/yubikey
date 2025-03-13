@@ -1,0 +1,2 @@
+cask "yubico-authenticator" # Application for generating TOTP and HOTP codes
+cask "pallotron-yubiswitch"

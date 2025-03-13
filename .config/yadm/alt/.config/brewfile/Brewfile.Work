@@ -1,32 +1,15 @@
 #### {{ yadm.class }} PACKAGES ####
-tap "common-fate/granted"
 tap "mszostok/tap"
 tap "homebrew/services"
 
-brew "action-docs" # Generate docs for GitHub actions
-brew "aws-cdk"
-brew "aws-sso-util"
-brew "awscli"
-brew "black"
-brew "codeowners-validator"
-brew "gettext"
-brew "gh"
+{% include "modules/aws" %}
+{% include "modules/terraform" %}
+{% include "modules/github" %}
+
 brew "go"
-brew "granted"
 brew "infracost"
-brew "kuzco"
 brew "libunistring"
-brew "pyenv-virtualenv"
-brew "shellcheck"
-brew "tenv"
-brew "terraform-docs"
-brew "tflint"
-brew "tmuxinator"
-brew "tpm"
-brew "tree"
 brew "trivy"
-brew "yq"
-brew "zizmor"
 
 cask "session-manager-plugin"
 #### END {{ yadm.class }} ####
