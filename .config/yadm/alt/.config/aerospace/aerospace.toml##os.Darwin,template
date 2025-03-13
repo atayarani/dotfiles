@@ -149,6 +149,9 @@ alt-shift-i = 'move-node-to-workspace IDE'
 alt-n = 'workspace Notes'
 alt-shift-n = 'move-node-to-workspace Notes'
 
+alt-p = 'workspace Password'
+alt-shift-p = 'move-node-to-workspace Password'
+
 alt-t = 'workspace Terminal'
 alt-shift-t = 'move-node-to-workspace Terminal'
 
@@ -212,6 +215,18 @@ run = ['move-node-to-workspace Notes']
 [[on-window-detected]]
 if.app-id = 'io.capacities.app'
 run = ['move-node-to-workspace Notes']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Passwords'
+run = ['move-node-to-workspace Password']
+
+[[on-window-detected]]
+if.app-id = 'me.proton.pass.electron'
+run = ['move-node-to-workspace Password']
+
+[[on-window-detected]]
+if.app-id = 'com.1password.1password'
+run = ['move-node-to-workspace Password']
 
 {% if yadm.class == "Work" %}
 [[on-window-detected]]
