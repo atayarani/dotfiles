@@ -22,7 +22,6 @@ Zotero/
 .config/git/config
 .config/karabiner/
 .config/raycast/
-.config/sheldon
 .config/zsh/.zprofile
 .config/zsh/.zshenv
 .config/zsh/.zshrc
