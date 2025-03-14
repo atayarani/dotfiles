@@ -85,15 +85,15 @@ vscode_xdg() {
         fi
     fi
 
-    if [[ ! -L "${LOG_DIR}" ]]; then
-        mv -v "${LOG_DIR}" "${XDG_STATE_HOME}/vscode"
-        rmdir "${LOG_DIR}" 2>/dev/null || true  # Ignore error if not empty
-        if [[ -d "${LOG_DIR}" ]]; then
-            exit 1
-        else
-            ln -sin "${XDG_STATE_HOME}/vscode" "${LOG_DIR}"
-        fi
-    fi
+    # if [[ ! -L "${LOG_DIR}" ]]; then
+    #     mv -v "${LOG_DIR}" "${XDG_STATE_HOME}/vscode"
+    #     rmdir "${LOG_DIR}" 2>/dev/null || true  # Ignore error if not empty
+    #     if [[ -d "${LOG_DIR}" ]]; then
+    #         exit 1
+    #     else
+    #         ln -sin "${XDG_STATE_HOME}/vscode" "${LOG_DIR}"
+    #     fi
+    # fi
 
 }
 
